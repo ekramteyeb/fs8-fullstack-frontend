@@ -1,0 +1,30 @@
+.login__form__div {
+  width: 55%;
+  margin: 2vh auto;
+  height: 100vh;
+  padding: 2vh 3rem;
+  margin-top:14vh;
+}
+.login__text__div {
+  font-weight: bold;
+  filter: blur(0px);
+  display: flex;
+  justify-content: space-between;
+}
+.login__text__div :hover {
+  filter: blur(-5px);
+  color: red;
+}
+.login__form {
+  margin-top: 6vh;
+}
+.login__line {
+  width: 136%;
+  margin: auto;
+  margin-left: -20%;
+  border: solid blue 1px;
+}
+.login__buttons{
+  display:flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,31 @@
+#offcanvasNavbar {
+  width: 14rem;
+  border-radius: 0.2em;
+  margin: auto;
+  border:cyan solid 1px;
+}
+.theme__btn {
+  min-width: 5rem;
+}
+
+.navlink {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+}
+.navlink__div {
+  width: 14rem;
+  margin-left: -1rem;
+}
+.navlink__div:hover {
+  background-color:#10CAF0;
+  border: solid 0.1px powderblue;
+}
+.vl {
+  border-right: solid#C8C9CA 0.1px;
+  width: 1px;
+  height: 8vh;
+  padding: 5vh 0vh;
+}

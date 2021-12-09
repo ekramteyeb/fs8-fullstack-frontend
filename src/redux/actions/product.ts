@@ -3,9 +3,10 @@ import { Dispatch } from 'redux'
 import {
   ADD_PRODUCT,
   REMOVE_PRODUCT,
+  ADD_ALL_PRODUCTS,
   ProductActions,
   Product,
-} from '../../types'
+} from '../../types/product'
 
 export function addProduct(product: Product): ProductActions {
   return {
@@ -24,14 +25,22 @@ export function removeProduct(product: Product): ProductActions {
     },
   }
 }
-
+export function fetchAllProducts(products: Product[]): ProductActions {
+  return {
+    type: ADD_ALL_PRODUCTS,
+    payload: {
+      products,
+    },
+  }
+}
 // Async action processed by redux-thunk middleware
-export function fetchProduct(productId: string) {
+export function fetchProducts(url: string) {
   return (dispatch: Dispatch) => {
-    return fetch(`products/${productId}`)
+    return fetch(url)
       .then((resp) => resp.json())
-      .then((product) => {
-        dispatch(addProduct(product))
+      .then((products) => {
+        localStorage.setItem('allProducts',JSON.stringify(products))
+        dispatch(fetchAllProducts(products))
       })
   }
 }

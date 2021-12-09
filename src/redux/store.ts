@@ -6,9 +6,29 @@ import { AppState } from '../types'
 import createRootReducer from './reducers'
 import rootSaga from './sagas'
 
+// access state in localstorage
+//for cart items
+let localCart: string | any = localStorage.getItem('inCartState')
+let inCartState = JSON.parse(localCart)
+// for all products
+let allProductsLocalString: string | any = localStorage.getItem('allProducts')
+let allProductsLocal = JSON.parse(allProductsLocalString)
+
+//for loggedIn user
+let localLoggedinUserString: any = localStorage.getItem('loggedinUser')
+let loggedin = JSON.parse(localLoggedinUserString)
 const initState: AppState = {
   product: {
-    inCart: [],
+    inCart: inCartState ? inCartState : [],
+    allProducts: allProductsLocal ? allProductsLocal : [],
+  },
+  user: {
+    loggedIn: loggedin
+      ? loggedin
+      : {
+        id: '',
+        email: '',
+      },
   },
 }
 

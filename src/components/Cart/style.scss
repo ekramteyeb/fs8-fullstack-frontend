@@ -1,0 +1,16 @@
+.cart__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.cart__wrapper span {
+  width: 20px;
+  text-align: center;
+  position: relative;
+  top: -10px;
+  right: 2px;
+  color: white;
+  font-size: 14px;
+  border-radius: 50%;
+  background-color: rgb(235, 10, 47);
+}

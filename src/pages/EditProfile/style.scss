@@ -1,0 +1,29 @@
+.edit__form__div {
+  width: 55%;
+  margin: 2vh auto;
+  padding: 2vh 3rem;
+  margin-top:14vh;
+}
+.edit__text__div {
+  font-weight: bold;
+  filter: blur(0px);
+  display: flex;
+  justify-content: space-between;
+}
+.edit__text__div :hover {
+  filter: blur(-5px);
+  color: red;
+}
+.edit__form {
+  margin-top: 6vh;
+}
+.edit__line {
+  width: 136%;
+  margin: auto;
+  margin-left: -20%;
+  border: solid blue 1px;
+}
+.address div{
+  display:flex;
+  flex-direction: row;
+}
