@@ -14,13 +14,35 @@ import './style.scss'
 
 export default function LogInForm(){
   const [email, setEmail] = useState('')
+  const [findEmail, setFindEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [color, setColor] = useState(false)
-  
-  const navigation = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-
+  
+  const clearNotify = () => {
+    setTimeout(()=>{ setError('')}, 4000)
+  }
+  // check the email 
+  const checkEmail = async (email: string) => {
+    const response =  await fetch('http://localhost:3001/api/v1/users/checkEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email: email, password: ''}),
+    })
+    const emailResponse = await response.json()
+    if(emailResponse.statusCode){
+      setFindEmail(emailResponse.message)
+      setTimeout(() => setFindEmail(''), 2000)
+    }else{
+      setFindEmail('')
+    }
+    return emailResponse
+  
+  }
   //fetch the loggedin user 
   const fetchUser = async (id : any, token : string) => {
     try{
@@ -32,25 +54,23 @@ export default function LogInForm(){
           }
         }
       )
-     
-      console.log(res, 'response from server while normal login ')
       const loggedinUser = {...res.data, googleId : '',token : token}
       dispatch(addUser(loggedinUser))
-      console.log('loggedinUser in State', loggedinUser)
       localStorage.setItem('loggedinUser', JSON.stringify(loggedinUser))
       
     }catch(err : any){
       setError('Something went wrong while fetching user')
+      clearNotify()
     }
   }
-  const Login = async (e: { preventDefault: () => void }) => {
+  const handleLogin = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const user = {
       email, 
       password
     }
     try {
-      const response =  await fetch('http://localhost:3001/login', {
+      const response =  await fetch('http://localhost:3001/api/v1/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,28 +78,28 @@ export default function LogInForm(){
         body: JSON.stringify(user),
       })
       const returnUser = await response.json()
-
-      //when login is success full fetch the user details from db
-      fetchUser(returnUser.id, returnUser.token)
-
-      //then clear the form 
-      console.log('Login success', returnUser.id)
-      setColor(true)
-      setEmail('')
-      setPassword('')
-      setTimeout(function(){
-        setError('')
-        navigation('/')
-        window.location.reload()
-      }, 1000)
-      setError('Login  successfully') 
+      
+      if(returnUser.token){
+        //when login is success full fetch the user details from db
+        fetchUser(returnUser.id, returnUser.token)
+        //then clear the form 
+        setColor(true)
+        setEmail('')
+        setPassword('')
+        setTimeout(function(){
+          setError('')
+          navigate('/')
+          window.location.reload()
+        }, 1000)
+        setError('Logged in   successfully') 
+      }else{
+        setError('Login failed email/password is not valid') 
+        clearNotify()
+      }
     }catch(err){
-      setColor(false)
-      setTimeout(()=>{ setError('')}, 1000)
-      setError('Something went wrong, pleas try again.' + err)
-      console.error('Error', err)
+      setError('Something went wrong, please try again.')
+      clearNotify()
     }
-
   }
   return (
     <div className='login__form__div'>
@@ -90,13 +110,12 @@ export default function LogInForm(){
       </div>
       <hr className='login__line'></hr>
 
-      <Form className='login__form'  onSubmit={Login}>
-        
+      <Form className='login__form'  onSubmit={handleLogin}>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email address *</Form.Label>
-          <Form.Control type='email' onChange={(e) => setEmail(e.target.value)} required placeholder='Enter email' />
+          <Form.Control type='email' onChange={(e) => setEmail(e.target.value)} onBlur={() => checkEmail(email)} required placeholder='Enter email' />
           <Form.Text className='text-muted'>
-          We'll never share your email with anyone else.
+            <span className="login__emailFound">{findEmail}</span>
           </Form.Text>
         </Form.Group>
         {' '}

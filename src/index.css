@@ -7,12 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   background-attachment: fixed;
-  background-color: #def7e3;
-  
-  
+  background-color:  /* #293a4a */ /* #f0f0eb */ /* #D7D7CF */ ;
+  /* #F9FAFB */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-

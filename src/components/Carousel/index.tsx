@@ -1,5 +1,7 @@
 import { Carousel } from 'react-bootstrap'
 
+import './index.scss'
+
 type PropType = {
   image : string, 
   height?: string
@@ -9,9 +11,9 @@ export default function Carousell({image, height, className}:PropType) {
   
   return (
     <Carousel variant="dark" className={className} >
-      <Carousel.Item>
+      <Carousel.Item className="carouselItem">
         <img
-          className="d-block w-100 "
+          className="d-block w-100 myimg"
           style={{maxHeight:height}}
           src={image}
           alt="First slide"
@@ -21,9 +23,9 @@ export default function Carousell({image, height, className}:PropType) {
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption> */}
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item className="carouselItem">
         <img
-          className="d-block w-100"
+          className="d-block w-100 myimg"
           style={{maxHeight:height}}
           //data-src="holder.js/800x100?text=Second slide&bg=282c34"
           src={image}
@@ -34,9 +36,9 @@ export default function Carousell({image, height, className}:PropType) {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption> */}
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item className="carouselItem">
         <img
-          className="d-block w-100"
+          className="d-block w-100 myimg"
           style={{maxHeight:height}}
           //src="holder.js/800x400?text=Third slide&bg=20232a"
           src={image}

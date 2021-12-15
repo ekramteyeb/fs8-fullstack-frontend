@@ -5,11 +5,13 @@ import {
   Navbar
 } from 'react-bootstrap'
 import { useSelector, useDispatch} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 //import { Theme, useTheme } from '../../context/Context'
 import CustomButton from '../../components/Button'
-import { removeUser } from '../../redux/actions'
+import { removeProduct, removeUser } from '../../redux/actions'
 import { AppState } from '../../types'
 import GoogleLogout from '../../components/GoogleLogout'
+
 
 import './style.scss'
 export default function Navigation() {
@@ -17,6 +19,9 @@ export default function Navigation() {
   const state = useSelector((state:AppState) => state)
   const user = state.user.loggedIn
   const dispatch = useDispatch()
+  const products = state.product.inCart
+  
+  const navigate = useNavigate()
   return (
     <Navbar bg={''} className="navbar" collapseOnSelect expand={false} >
       <Container fluid >
@@ -41,7 +46,7 @@ export default function Navigation() {
               </Nav>
               <Nav className="justify-content-end flex-grow-1 pe-3" style={{display: user.email ? 'block' : 'none'}} >
                 <Nav.Link href="#" >
-                  {(user.googleId ) ?  <GoogleLogout /> : 
+                  {(user['googleId'] !== undefined && user['googleId'] !== '') ?  <GoogleLogout /> : 
                     <CustomButton
                       className="theme__btn purplebtn"
                       color="outline-info"
@@ -50,6 +55,8 @@ export default function Navigation() {
                         if(window.confirm('logout ?')){
                           dispatch(removeUser(state.user.loggedIn))
                           localStorage.setItem('loggedinUser', JSON.stringify('') );
+                          products.forEach(p => dispatch(removeProduct(p.product)))
+                          navigate('/')
                           /* window.location.replace('/') */
                         }
                       }}
@@ -58,9 +65,7 @@ export default function Navigation() {
                  
                 </Nav.Link>
               </Nav>
-              
             </Offcanvas.Title>
-            
           </Offcanvas.Header>
           <hr></hr>
           <Offcanvas.Body>

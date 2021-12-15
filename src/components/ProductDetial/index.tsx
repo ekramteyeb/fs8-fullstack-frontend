@@ -1,4 +1,4 @@
-import { Button, Card } from "react-bootstrap"
+import {  Card } from "react-bootstrap"
 import CustomButton from "../Button"
 import Carousel from "../Carousel"
 
@@ -9,19 +9,21 @@ type ProbTypes = { product : {
   productCode:string,
   image:string,
   price:number,
-  productionYear:string,
+  productionYear:number,
   rating:number, 
   modelType: string,
   warranty: number, 
   techInfo:string[]
-}}
-export default function Product({product:{name, category, productCode, image, price, productionYear, rating, warranty, modelType, techInfo }}:ProbTypes){
+}, handleAdd? : () => void
+}
+export default function Product({product:{name, category, productCode, image, price, productionYear, rating, warranty, modelType, techInfo }, handleAdd}:ProbTypes){
   return (
     <div className='product__div'>
+      <Carousel className="carousel" image={image} height='95vh' />
       <Card className='product__card'>
         {/* <Card.Img variant="top" src={image} ></Card.Img> */}
         <small className='product__code'>#{productCode}</small>
-        <Carousel className="carousel" image={image} height='45vh' />
+        
         <hr></hr>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
@@ -41,7 +43,7 @@ export default function Product({product:{name, category, productCode, image, pr
             </ul>
             <hr></hr>
             <CustomButton color="info" text="Details" onClick={()=> alert('amcliked')}/>{' '}
-            <Button variant="success">add to cart</Button>
+            <CustomButton color="success" text="add to cart" onClick={handleAdd} />
           </div>
           
         </Card.Body>

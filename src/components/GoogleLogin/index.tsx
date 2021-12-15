@@ -16,7 +16,7 @@ function Login() {
   const onSuccess = async (response: any) => {
     console.log('Login Success: currentUser:', response);
     let res = await axios.post(
-      'http://localhost:3001/google',
+      'http://localhost:3001/api/v1/users/google',
       {id_token:response.tokenObj.id_token}
     )
     refreshTokenSetup(response);

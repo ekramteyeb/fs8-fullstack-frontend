@@ -9,7 +9,6 @@ type PropTypes = {
   handleChange: (input: React.ChangeEvent<HTMLInputElement>) => void
 }
 const SearchComponent = ({ handleChange, placeholder }: PropTypes) => {
-  //console.log("search component rendering");
   return (
     <Form className="d-flex search">
       <Form.Control
@@ -19,7 +18,6 @@ const SearchComponent = ({ handleChange, placeholder }: PropTypes) => {
         className="me-2 search__bar"
         aria-label="Search"
       />
-      {/* <Button variant="outline-success">Search</Button> */}
     </Form> 
   )  
 }

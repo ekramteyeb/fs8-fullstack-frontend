@@ -6,23 +6,26 @@ import { Routes as Switch, Route, Navigate } from 'react-router-dom' // updated 
 //https://stackoverflow.com/questions/63124161/attempted-import-error-switch-is-not-exported-from-react-router-dom
 
 import Home from './pages/Home/Home'
-import Product from './pages/Products/Product'
-import Products from './pages/Products/Products'
+import Product from './pages/Products/ProductDetail'
+import Products from './pages/Products/ProductsCheckout'
 import LogIn from './pages/Login'
 import Signup from './pages/Signup'
 import EditProfile from './pages/EditProfile'
-
-
+import AdminPage from './pages/Admin'
 const Routes = () => (
   <>
     <Switch>
       <Route path="/" element={<Home />} />
+      {/* <Route path="/products/product" element={<Product />} /> */}
       <Route path="/products" element={<Products />} />
       <Route path="/products/:id" element={<Product />} />
       <Route path="/login" element={<LogIn />} />
+      <Route path="/admin" element={<AdminPage />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/editprofile" element={<EditProfile />} />
       <Route path="*" element={<Navigate to ="/" />}/>
+      {/* <Route path="/admin/users" element={<Users />} />
+      <Route path="/admin/orders" element={<Orders />} /> */}
     </Switch>
   </>
 )

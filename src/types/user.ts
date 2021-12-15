@@ -7,7 +7,7 @@ export const REMOVE_USER = 'REMOVE_USER'
 // A user
 export type User = {
   id: string
-  username?: string
+  userName?: string
   firstName?: string
   lastName?: string
   gender?: string
@@ -20,10 +20,11 @@ export type User = {
   }
   products?: Product[]
   avatar?: string
+  createdAt?: string
   isAdmin?: boolean
-  googleId? : string
+  googleId?: string
   token?: string
-  cart? : Product[]
+  cart?: Product[]
 }
 
 export type AddUserAction = {

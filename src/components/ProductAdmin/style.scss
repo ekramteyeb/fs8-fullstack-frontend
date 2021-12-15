@@ -1,0 +1,79 @@
+.product__admin__div {
+  height: 25vh;
+  width: 100%;
+  font-size: small;
+  margin-bottom: 3vh;
+}
+.product__admin__card {
+  border: solid #f0f0eb 1px;
+  padding: 0px 2px;
+
+  /* border-radius: 0.5em; */
+  background-color: white;
+
+  border-radius: 0.9em;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.admin__card__body {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.admin__carousel {
+  padding: 4px;
+  width: 14%;
+}
+/* .admin__card__details {
+} */
+.admin__card__buttons {
+  display: flex;
+  align-items: center;
+}
+.fa-heart {
+  font-size: 18px;
+  color: purple;
+}
+.fa-heart:hover {
+  font-size: 14px;
+  color: rgb(47, 89, 145);
+}
+
+.product__admin__code {
+  color: white;
+}
+.card__details {
+  display: block;
+}
+/* .product__admin__div :hover {
+  position: absulute;
+  z-index: 10;
+} */
+
+.product__admin__div :hover > .product__admin__code {
+  color: black;
+}
+.product__admin__div :hover > .card__details {
+  display: block;
+}
+
+.admin__carousel :hover {
+  color: red;
+}
+.product__admin__image__div {
+  width: 100%;
+}
+.product__admin__image {
+  width: 150px;
+}
+.cardButtons__div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (min-width: 1200px) {
+  .product__div {
+    height: 60vh;
+  }
+}

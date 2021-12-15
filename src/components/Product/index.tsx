@@ -1,12 +1,13 @@
-import { Button, Card } from "react-bootstrap"
-import CustomButton from "../Button"
+import { Card } from "react-bootstrap"
+//import CustomButton from "../Button"
 import Carousel from "../Carousel"
 import ProductType from '../../types/product'
 
 import './style.scss'
+import { Link } from "react-router-dom"
  type PropTypes = { 
    product : ProductType ,
-   handleAdd: () => void,
+   handleAdd?: () => void,
    handleLike? : () => void
 } 
 export default function Product({product:{
@@ -29,8 +30,8 @@ handleAdd,
 handleLike
 }:PropTypes){
   return (
-    <div className='product__div'>
-      <Card className='product__card'>
+    <Link to={`/products/${id}`}><div className='product__div'>
+      <Card className='product__card' >
         <div className='product__top'>
           <small className='product__code'>
             #{productCode}
@@ -44,33 +45,34 @@ handleLike
             <i className="fa fa-heart"  ></i>
           </div>
         </div>
-        <Carousel className="carousel" image={image} height='45vh' />
-        <hr></hr>
+        <Carousel className="carousel" image={image} height='25vh' />
+        
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
-            price  : {price} €<br/>
-            year model : {productionYear}<br/>
-            rating : {rating} <br/>
+            Price {price} € <br/>
+            {rating} <i className="fa fa-star" aria-hidden="true"></i>
+            
           </Card.Text>
           <div className="card__details">
-            <hr></hr>
+            {/* <hr></hr>
             model type  : {modelType} <br/>
             warranty  : {warranty} years <br/>
             category : {category}<br/>
-            {/* Technical info 
+             Technical info 
             <ul>
               {techInfo.map((info:string) => <li key={info}>{info}</li>)}
             </ul> */}
-            <hr></hr>
-            <CustomButton color="info" text="Details" onClick={()=> alert('amcliked')}/>{' '}
-            <Button variant="success" onClick={handleAdd}>add to cart</Button>
+            {/* <div className="cardButtons__div">
+              <Link to={`/products/${id}`}><CustomButton color="info" text="Detail" /></Link>{' '}
+              <CustomButton color="success" onClick={handleAdd} width={80} text="cart"/>
+            </div> */}
           </div>
           
         </Card.Body>
       </Card>
     </div>
-      
+    </Link>
   )
 }
 

@@ -3,7 +3,7 @@
   margin: 2vh auto;
   height: 100vh;
   padding: 2vh 3rem;
-  margin-top:14vh;
+  margin-top: 14vh;
 }
 .login__text__div {
   font-weight: bold;
@@ -24,7 +24,11 @@
   margin-left: -20%;
   border: solid blue 1px;
 }
-.login__buttons{
-  display:flex;
+.login__buttons {
+  display: flex;
   justify-content: space-between;
+}
+.login__emailFound {
+  color: red;
+  font-size: 10pt;
 }

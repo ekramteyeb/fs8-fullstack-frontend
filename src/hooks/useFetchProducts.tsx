@@ -31,13 +31,10 @@ const useFetch = (
     let filterdProducts = data.filter((product: Product) =>
       product.name
         .toLowerCase()
-        /* .concat(product.region.toLowerCase())
+        .concat(product.category.toLowerCase())
         .concat(
-          product.languages
-            .map((lang) => lang.name)
-            .toString()
-            .toLowerCase()
-        ) */
+          product.color.toLowerCase()
+        ) 
         .includes(search.toLowerCase())
     )
     //console.log(filterdProducts, "filterdProducts ");

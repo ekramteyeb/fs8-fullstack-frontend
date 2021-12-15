@@ -2,37 +2,3 @@
   height: 94vh;
   width: 15rem;
 }
-.product__card {
-  border: solid white 1px;
-  padding: 0px 5px;
-  position: relative;
-  /* border-radius: 0.5em; */
-  background-color: white;
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-}
-.product__code {
-  color: white;
-}
-.card__details {
-  display: none;
-}
-.product__div :hover {
-  position: absulute;
-  z-index: 10;
-}
-
-.product__div :hover > .product__code {
-  color: black;
-}
-.product__div :hover > .card__details {
-  display: block;
-}
-.carousel :hover {
-  color: red;
-}
-.product__image__div {
-  width: 100%;
-}
-.product__image {
-  width: 150px;
-}

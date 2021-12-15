@@ -1,8 +1,8 @@
 .edit__form__div {
-  width: 55%;
+  width: 53%;
   margin: 2vh auto;
   padding: 2vh 3rem;
-  margin-top:14vh;
+  margin-top: 14vh;
 }
 .edit__text__div {
   font-weight: bold;
@@ -23,7 +23,15 @@
   margin-left: -20%;
   border: solid blue 1px;
 }
-.address div{
-  display:flex;
+.address div {
+  display: flex;
   flex-direction: row;
+}
+.edit__findPassword {
+  font-size: 10pt;
+  color: red;
+}
+.edit__checkEmail {
+  font-size: 10pt;
+  color: red;
 }

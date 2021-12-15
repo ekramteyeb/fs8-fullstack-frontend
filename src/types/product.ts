@@ -1,7 +1,7 @@
 import { User } from './user'
 
 // Action types
-export  const ADD_PRODUCT = 'ADD_PRODUCT'
+export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const ADD_ALL_PRODUCTS = 'ADD_ALL_PRODUCTS'
 
@@ -50,8 +50,8 @@ export type ProductActions =
 
 // state
 export type CartState = {
-  product : Product
-  quantity : number
+  product: Product
+  quantity: number
 }
 export type ProductState = {
   inCart: CartState[]
