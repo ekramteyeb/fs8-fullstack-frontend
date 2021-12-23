@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Container, Form, ListGroup } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import CustomButton from "../../components/Button"
-import { addProduct, removeProduct } from "../../redux/actions"
+import { addCart, removeCart } from "../../redux/actions"
 import { AppState } from "../../types"
 import Image from "../../components/Image"
 
@@ -42,7 +42,7 @@ export default function Products() {
               <button 
                 className='product__list__btn'
                 onClick={()=> 
-                  dispatch(addProduct(product.product)
+                  dispatch(addCart(product.product)
                   )}>
                 +
               </button>
@@ -50,8 +50,8 @@ export default function Products() {
                 className='product__list__btn'
                 onClick={function(){
                   product.quantity > 1 ? 
-                    dispatch(removeProduct(product.product)) : 
-                    (() => window.confirm('Remove product from cart?') ? dispatch(removeProduct(product.product)): '')()
+                    dispatch(removeCart(product.product)) : 
+                    (() => window.confirm('Remove product from cart?') ? dispatch(removeCart(product.product)): '')()
                 } 
                 }>
                 -

@@ -10,9 +10,11 @@ export default function ProfileEditLink(){
   const user = useSelector((state:AppState) => state.user.loggedIn)
  
   return (
-    <NavDropdown  
+    <NavDropdown
+        
       title={
-        `Hi ${user.firstName ? user.firstName : 'User'}`
+        //<p className="nav__title">{`Hi ${user.firstName ? user.firstName : 'User'}`}</p>
+        <div className="nav__title">{`Welcome ${user.firstName ? user.firstName : 'User'} `}<i className="bi bi-person-square"></i></div>
       } 
       id="offcanvasNavbarDropdown">
       <NavDropdown.Item 

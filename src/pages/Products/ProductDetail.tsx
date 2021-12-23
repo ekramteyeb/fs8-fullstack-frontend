@@ -76,23 +76,3 @@ export default function Product() {
   )
 }
 
-/* import { Button, Card } from "react-bootstrap"
-import CustomButton from "../Button"
-import Carousel from "../Carousel"
-
-import './style.scss'
-type ProbTypes = { product : {
-  name: string,
-  category:string,
-  productCode:string,
-  image:string,
-  price:number,
-  productionYear:number,
-  rating:number, 
-  modelType: string,
-  warranty: number, 
-  techInfo:string[]
-} 
-}
-*/
-

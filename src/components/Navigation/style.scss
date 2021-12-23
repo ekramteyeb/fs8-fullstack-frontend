@@ -2,10 +2,12 @@
   width: 14rem;
   border-radius: 0.2em;
   margin: auto;
-  border:cyan solid 1px;
+  color: lemonchiffon;
+  background-color: #3787d1f5;
 }
 .theme__btn {
   min-width: 5rem;
+  color: lemonchiffon;
 }
 
 .navlink {
@@ -20,7 +22,7 @@
   margin-left: -1rem;
 }
 .navlink__div:hover {
-  background-color:#10CAF0;
+  background-color: #10caf0;
   border: solid 0.1px powderblue;
 }
 .vl {

@@ -1,18 +1,17 @@
 import { useState } from 'react'
 import { Container, Pagination } from 'react-bootstrap'
 import PageItem from 'react-bootstrap/PageItem'
-import { useSelector } from 'react-redux'
 import DisplayProducts from '../../components/DisplayProducts'
 import SearchComponent from '../../components/Search'
 import useFetchProducts from '../../hooks/useFetchProducts'
 
+
 import './style.scss'
 export default function Home() {
-  const state = useSelector(state => state)
-  console.log(state, 'state from home')
-
   const [search, setSearch] = useState('')
-  const [error, data] = useFetchProducts(search,true, '')
+  const [category, setCategory] = useState('')
+  const [desending, setDesending] = useState('')
+  const [error, data] = useFetchProducts(search, desending, category)
   let active = 2;
   let items = [];
   if(error){
@@ -27,11 +26,38 @@ export default function Home() {
   }
   return (
     <Container fluid className='container__products'>
-      <SearchComponent
-        handleChange={(e) => setSearch(e.target.value)}
-        placeholder="search product"
-      />
-      <DisplayProducts products={data} /> <br/><br/><br/>
+      <div className="jumbotron">
+        <h1 className="display-4">For your favorite Mobile Choices!</h1>
+      </div>
+      <div className="home__search__div">
+        <SearchComponent
+          handleChange={(e) => setSearch(e.target.value)}
+          placeholder="search product"
+        />
+        <>
+          
+          <select name="cars" onChange={(e) => setCategory(e.target.value)} id="category">
+            <option value="">Category</option>
+            <option value="mobile">mobile</option>
+            <option value="tv">tv</option>
+            <option value="tablet">tablet</option>
+            
+          </select> 
+        </>
+        <>
+          
+          <select name="price" onChange={(e) => setDesending(e.target.value)} id="price">
+            <option value="">Price</option>
+            <option value="asc">Chepest</option>
+            <option value="desc">expensive</option>
+          </select>
+        </>
+      </div>
+      <div className="search__result">
+        {search || category ? <small>{data.length} items met the search criteria</small> : ''}
+      </div>
+      <hr></hr>
+      <DisplayProducts products={data}/> <br/><br/><br/>
       <Pagination size='lg'>{items}</Pagination>
       {(error !== '') ? console.log(error, 'error') : ''}
     </Container>

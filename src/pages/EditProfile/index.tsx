@@ -24,7 +24,6 @@ export default function EditProfile(){
   const [country, setCountry] = useState('')
   const [result, setResult] = useState('')
   const [color, setColor] = useState(false)
-  
 
   // check the password 
   const checkPassword = async (id: string, password: string) => {
@@ -62,8 +61,9 @@ export default function EditProfile(){
         country: country ? country : loggedinUser?.address?.country
       }
     }
+  
     try {
-      const response =  await fetch(`http://localhost:3001/api/v1/users/${loggedinUser.id}`, {
+      const response : any =  await fetch(`http://localhost:3001/api/v1/users/${loggedinUser.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -71,9 +71,14 @@ export default function EditProfile(){
         },
         body: JSON.stringify(user),
       })
+      console.log(response, 'response from edit profile')
+      console.log('token from edit profile', token)
       const returnUser = await response.json()
-      dispatch(addUser(returnUser))
-      localStorage.setItem('loggedinUser', JSON.stringify(returnUser))
+      const googleId = loggedinUser.googleId
+      console.log('return user or response' , returnUser)
+      dispatch(addUser({...returnUser, token : token}))
+      const loggedin = {...returnUser, token : token, googleId: googleId}
+      localStorage.setItem('loggedinUser', JSON.stringify(loggedin))
       setColor(true)
       setEmail('')
       setPassword('')

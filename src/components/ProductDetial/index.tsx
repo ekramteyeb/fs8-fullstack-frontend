@@ -39,7 +39,7 @@ export default function Product({product:{name, category, productCode, image, pr
             category : {category}<br/>
             Technical info 
             <ul>
-              {techInfo.map((info:string) => <li key={info}>{info}</li>)}
+              { (techInfo && techInfo.length > 0 )?  techInfo.map((info:string) => <li key={info}>{info}</li>) : ''}
             </ul>
             <hr></hr>
             <CustomButton color="info" text="Details" onClick={()=> alert('amcliked')}/>{' '}

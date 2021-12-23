@@ -7,7 +7,8 @@ import './style.scss'
 import { Link } from "react-router-dom"
  type PropTypes = { 
    product : ProductType ,
-   handleAdd?: () => void,
+   handleEdit?: () => void,
+   handleDelete?: () => void,
    handleLike? : () => void
 } 
 export default function Product({product:{
@@ -27,8 +28,9 @@ export default function Product({product:{
   users
   
 },
-handleAdd,
-handleLike
+handleEdit,
+handleLike,
+handleDelete
 }:PropTypes){
   return (
     <div className='product__admin__div'>
@@ -44,11 +46,11 @@ handleLike
             </Card.Text>
           </div>
           <div className="admin__card__buttons">
-            <Link to={`#`}><CustomButton color="info" text="Edit" /></Link>{'-'}
+            <Link to={`#`}><CustomButton color="info" text="Edit" onClick={handleEdit}/></Link>{'-'}
             <Link to={`/products/${id}`}><CustomButton color="info" text="Detail" /></Link>{'- '}
-            <Link to={`#`}><CustomButton color="danger" text="Delet" /></Link>{'- '}
-            <CustomButton color="success" onClick={handleAdd} width={80} text="cart"/>
-          </div>
+            <Link to={`#`}><CustomButton color="danger" text="Delete" onClick={handleDelete}/></Link>
+            {/*             <CustomButton color="success" onClick={handleAdd} width={80} text="cart"/>
+ */}          </div>
         </Card.Body>
       </Card>
     </div>

@@ -1,3 +1,39 @@
 .container__products {
   margin-top: 59px;
+  text-align: center;
+}
+.jumbotron {
+  background: url('../../images/phoneshop.jpeg');
+  background-repeat: repeat-x;
+  padding-top: 279px;
+  min-height: 400px;
+  background-color: #24588a;
+  /* border: solid #24588a 1vh; */
+  margin-left: -9px;
+  margin-right: -9px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.jumbotron h1 {
+  color: #1869b5;
+  font-weight: bold;
+}
+.home__search__div {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: -10px;
+}
+.home__search__div select {
+  padding: 0px 2rem;
+}
+.search__result {
+  color: brown;
+  padding-top: 12px;
 }

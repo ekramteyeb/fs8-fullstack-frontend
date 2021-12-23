@@ -10,6 +10,10 @@ import rootSaga from './sagas'
 //for cart items
 let localCart: string | any = localStorage.getItem('inCartState')
 let inCartState = JSON.parse(localCart)
+
+//for cart items
+let localfavorite: string | any = localStorage.getItem('favorite')
+let favorite = JSON.parse(localfavorite)
 // for all products
 let allProductsLocalString: string | any = localStorage.getItem('allProducts')
 let allProductsLocal = JSON.parse(allProductsLocalString)
@@ -21,6 +25,7 @@ const initState: AppState = {
   product: {
     inCart: inCartState ? inCartState : [],
     allProducts: allProductsLocal ? allProductsLocal : [],
+    favorite: favorite ? favorite : [],
   },
   user: {
     loggedIn: loggedin

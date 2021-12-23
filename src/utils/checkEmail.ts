@@ -6,15 +6,12 @@ export const checkEmail = async (email: string) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: email, password: '' }),
+      body: JSON.stringify({ email: email }),
     }
   )
   const emailResponse = await response.json()
   if (emailResponse.statusCode) {
     return emailResponse.message
-    //setFindEmail(emailResponse.message)
-    //setTimeout(() => setFindEmail(''), 2000)
-    //setFindEmail('')
   }
   return emailResponse
 }

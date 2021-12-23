@@ -1,4 +1,3 @@
-//import { useState } from "react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -28,15 +27,15 @@ export default function SignupForm(){
         body: JSON.stringify(user),
       })
       const returnUser = await response.json()
-      console.log('Signed up success', returnUser)
+      setResult(returnUser.message) 
       setColor(true)
       setEmail('')
       setPassword('')
-      setTimeout(()=>{ setResult('')}, 2000)
-      setResult('Signed up successfully') 
+      setTimeout(()=>{ setResult('')}, 4000)
+      
     }catch(err){
       setColor(false)
-      setTimeout(()=>{ setResult('')}, 2000)
+      setTimeout(()=>{ setResult('')}, 4000)
       setResult('Something went wrong, pleas try again.')
       console.error('Error', err)
     }
@@ -54,7 +53,13 @@ export default function SignupForm(){
       <Form className="signup__form" id="signup" onSubmit={Signup}>
         <Form.Group className="mb-3" controlId="formBasicEmail1">
           <Form.Label>Email address *</Form.Label>
-          <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} required value={email} placeholder="Enter email" />
+          <Form.Control 
+            type="email" 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+            value={email} 
+            placeholder="Enter email" 
+          />
           <Form.Text className="text-muted">
           We'll never share your email with anyone else.
           </Form.Text>

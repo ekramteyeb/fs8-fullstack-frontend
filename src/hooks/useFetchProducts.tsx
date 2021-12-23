@@ -10,8 +10,8 @@ import Product  from '../types/product'
 
 const useFetch = (
   search: string,
-  sortOrder: boolean,
-  sortColumn: string
+  isAsending: string,
+  category: string
 ): [Error | unknown, Product[]] => {
   //const [data, setData] = useState<Product[]>([])
   const [error, setError] = useState<unknown>('')
@@ -36,11 +36,11 @@ const useFetch = (
           product.color.toLowerCase()
         ) 
         .includes(search.toLowerCase())
-    )
+    ).filter((product:Product) => category !== '' ? product.category === category : product)
+      .sort((a,b) => isAsending === 'asc' ? a.price - b.price : isAsending === 'desc' ? b.price - a.price : b.price )
     //console.log(filterdProducts, "filterdProducts ");
-
     /* // sort array of objects by property name/key
-    let sortArray = (arr: [] | any, sortBy: string, isAsending: boolean) => {
+    let sortArray = (arr: [] | an y, sortBy: string, isAsending: boolean) => {
       //let firstproduct = arr.length > 0 ? arr[arr.length - 1][sortBy] : "";
       if (arr.length > 0) {
         let sorted =
@@ -61,7 +61,7 @@ const useFetch = (
     // console.log(filterdSortedCountries, "filterd and sorted countries");
 
     setFilterdProducts(filterdProducts)
-  }, [data, search, sortColumn, sortOrder])
+  }, [data, search, category, isAsending])
 
   return [error, filterdProducts]
 }

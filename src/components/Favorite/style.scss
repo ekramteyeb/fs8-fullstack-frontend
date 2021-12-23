@@ -1,0 +1,22 @@
+.offcanvas__favorite {
+  background-color: #24588a;
+  color: lemonchiffon;
+}
+.fproduct__card__body {
+  display: flex;
+  justify-content: space-between;
+}
+.fproduct__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2px;
+}
+
+.fproduct__list__btn {
+  background-color: white;
+  border: none;
+}
+.offcanvas__favorite {
+  width: 33%;
+}

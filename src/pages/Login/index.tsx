@@ -1,14 +1,12 @@
-import axios from 'axios'
 import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { Link} from 'react-router-dom'
-//import axios from 'axios'
-//import CustomButton from '../../components/Button'
 import GoogleLogin from '../../components/GoogleLogin'
 import Notification from '../../components/Notification'
 import { addUser } from '../../redux/actions'
+import {fetchUser} from '../../utils/fetchUser'
+import { loginorSignup } from '../../utils/loginorSignup'
 
 import './style.scss'
 
@@ -18,7 +16,6 @@ export default function LogInForm(){
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [color, setColor] = useState(false)
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   
   const clearNotify = () => {
@@ -26,70 +23,58 @@ export default function LogInForm(){
   }
   // check the email 
   const checkEmail = async (email: string) => {
-    const response =  await fetch('http://localhost:3001/api/v1/users/checkEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({email: email, password: ''}),
-    })
-    const emailResponse = await response.json()
-    if(emailResponse.statusCode){
-      setFindEmail(emailResponse.message)
-      setTimeout(() => setFindEmail(''), 2000)
-    }else{
-      setFindEmail('')
-    }
-    return emailResponse
-  
-  }
-  //fetch the loggedin user 
-  const fetchUser = async (id : any, token : string) => {
     try{
-      const res = await axios.get(
-        `http://localhost:3001/api/v1/users/${id}`,
-        {
-          headers:{
-            Authorization : `Bearer ${token}`,
-          }
-        }
-      )
-      const loggedinUser = {...res.data, googleId : '',token : token}
-      dispatch(addUser(loggedinUser))
-      localStorage.setItem('loggedinUser', JSON.stringify(loggedinUser))
-      
-    }catch(err : any){
-      setError('Something went wrong while fetching user')
-      clearNotify()
-    }
-  }
-  const handleLogin = async (e: { preventDefault: () => void }) => {
-    e.preventDefault()
-    const user = {
-      email, 
-      password
-    }
-    try {
-      const response =  await fetch('http://localhost:3001/api/v1/users/login', {
+      const response =  await fetch('http://localhost:3001/api/v1/users/checkEmail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify({email: email}),
       })
-      const returnUser = await response.json()
+      const emailResponse = await response.json()
+      if(emailResponse.statusCode){
+        setFindEmail(emailResponse.message)
+        setTimeout(() => setFindEmail(''), 2000)
+      }else{
+        setFindEmail('')
+      }
+      return emailResponse
+    }catch(error){
+      setError('Something went error while cheking email')
+      setTimeout(() => setError(''), 2000)
       
-      if(returnUser.token){
+    }
+  }
+  
+  const handleLogin = async (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    try {
+      //login in 
+      const returnUser = await loginorSignup(
+        'http://localhost:3001/api/v1/users/login', 
+        email, 
+        password
+      )
+      //destruct id , token 
+      const {id, token}  = returnUser
+      if(token){
         //when login is success full fetch the user details from db
-        fetchUser(returnUser.id, returnUser.token)
+        const user = await fetchUser(id, token)
+        if(user){
+          const loggedinUser = {...user, googleId : '',token : token}
+          dispatch(addUser(loggedinUser))
+          localStorage.setItem('loggedinUser', JSON.stringify(loggedinUser))
+        }else{
+          setError('Something went wrong, please try again.')
+          clearNotify()
+        }
         //then clear the form 
         setColor(true)
         setEmail('')
         setPassword('')
         setTimeout(function(){
           setError('')
-          navigate('/')
-          window.location.reload()
+          window.location.replace('/') 
         }, 1000)
         setError('Logged in   successfully') 
       }else{
@@ -97,7 +82,7 @@ export default function LogInForm(){
         clearNotify()
       }
     }catch(err){
-      setError('Something went wrong, please try again.')
+      setError('Email/password not correct, please try again.')
       clearNotify()
     }
   }
@@ -113,7 +98,12 @@ export default function LogInForm(){
       <Form className='login__form'  onSubmit={handleLogin}>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email address *</Form.Label>
-          <Form.Control type='email' onChange={(e) => setEmail(e.target.value)} onBlur={() => checkEmail(email)} required placeholder='Enter email' />
+          <Form.Control 
+            type='email' 
+            onChange={(e) => setEmail(e.target.value)} 
+            onBlur={() => checkEmail(email)} 
+            required 
+            placeholder='Enter email' />
           <Form.Text className='text-muted'>
             <span className="login__emailFound">{findEmail}</span>
           </Form.Text>
@@ -121,7 +111,12 @@ export default function LogInForm(){
         {' '}
         <Form.Group className='mb-3' controlId='formBasicPassword'>
           <Form.Label>Password *</Form.Label>
-          <Form.Control type='password' onChange={(e) => setPassword(e.target.value)} required placeholder='Password' />
+          <Form.Control 
+            type='password' 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
+            placeholder='Password' 
+          />
         </Form.Group>
         <Form.Group className='mb-3' controlId='formBasicCheckbox'>
           <Form.Check type='checkbox'  label='remember password' />
@@ -131,6 +126,9 @@ export default function LogInForm(){
           <GoogleLogin />
         </div>
       </Form>
+      <br/>
+      <Link to="/forgot"> Forgot password?</Link>
+
     </div>
   )
 }

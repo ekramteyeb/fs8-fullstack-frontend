@@ -13,7 +13,7 @@ export const Users = () => {
   const [users, setUsers] = useState([])
   const url = 'http://localhost:3001/api/v1/users'
   const user = useSelector((state:AppState) => state.user.loggedIn)
-
+  console.log('user from admim users page', user)
   useEffect(() => {
     axios.get(url, {
       method: 'GET',

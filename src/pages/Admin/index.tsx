@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Container, Nav } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Product from "../../components/ProductAdmin";
 import { AppState } from "../../types";
-
-
-import './style.scss'
 import { Users } from "./users";
 import { Orders } from "./orders";
+import CustomButton from "../../components/Button";
+import CreateProduct  from "./product/createProduct";
+import Notification from "../../components/Notification";
 
-
+import './style.scss'
+import { deleteProduct } from "../../utils/manageProduct";
+import { removeProduct } from "../../redux/actions";
 export const Products = ({products } : any) => {
   return(
     <>
@@ -32,8 +34,33 @@ export default function AdminPage(){
 
   const state = useSelector((state: AppState) => state)
   const products = state.product.allProducts
+  const token : string | any = state.user.loggedIn.token
   const [switche , setSwith] = useState('')
+  const [message , setMessage] = useState('')
+  const [color , setColor] = useState(false)
+  const dispatch = useDispatch()
+  
+  const handleDelete = async (id: any) => {
+    const confirm = window.confirm('are you sure to delete the product ?')
+    if(confirm) {
+      const response = await deleteProduct(id, token)
+      console.log(response?.status, 'response status')
+      if(response.status === 204){
+        setMessage('Delete is successfull')
+        dispatch(removeProduct(id))
+        setColor(true)
+        window.location.replace('/admin') 
+        setTimeout(() => setMessage(''), 2000)
+        
+      }else{
+        setMessage('Delete is not successfull')
+        setColor(false)
+      }
+    }else{
 
+    }
+       
+  }
   const deliver = (casee:string) : any => {
     switch(casee){
     case 'orders' : 
@@ -42,16 +69,35 @@ export default function AdminPage(){
       return <Users />
     case 'carts' : 
       return <Carts />
+    case 'addproduct' : 
+      return <CreateProduct/>
     default: 
-      return<Products products={products} />
+      return (
+        products.sort(function(a,b){
+          if(a.createdAt > b.createdAt) return -1
+          if(a.createdAt < b.createdAt) return 1
+          return 0}
+        ).map(product => 
+          <Product key={product.id} 
+            product={product} 
+            handleEdit={
+              () => setSwith('addproduct')
+            }
+            handleDelete={() => handleDelete(product.id)}
+            
+          />
+        )
+      )
+    
     }
+    
   }
-  
-
   return (
     <>
       <Container fluid className="admin__page__div">
         <div className="admin__menu">
+          {message ? <Notification message={message} color={color} /> : '' }
+          {products.length}
           <Nav className="admin__nav" variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
               <Nav.Link onClick={() => setSwith('products')} href="#">Products</Nav.Link>
@@ -74,7 +120,11 @@ export default function AdminPage(){
                 Admin Dasheboard
               </h3>
             </Nav.Item>
-            
+            <Nav.Item>
+              <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <CustomButton text="add product" onClick={() => setSwith('addproduct')}/>
+              </h3>
+            </Nav.Item>
           </Nav>
         </div>
         <div className="admin__main">

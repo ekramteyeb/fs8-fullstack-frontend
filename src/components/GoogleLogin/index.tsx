@@ -2,7 +2,6 @@ import axios from 'axios'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { GoogleLogin } from 'react-google-login'
-import { useNavigate } from 'react-router-dom'
 import { refreshTokenSetup } from '../../utils/refreshTokenSetup'
 import { addUser } from '../../redux/actions'
 
@@ -10,9 +9,7 @@ import './style.scss'
 
 function Login() {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const clientId : any = '515353806091-61sk3rjrksrenpccphupbd440fu2b8aq.apps.googleusercontent.com'
-  
   const onSuccess = async (response: any) => {
     console.log('Login Success: currentUser:', response);
     let res = await axios.post(
@@ -21,13 +18,11 @@ function Login() {
     )
     refreshTokenSetup(response);
     //set the state
-    const loggedinUser = {...res.data.user, googleId : response.googleId, token : response.tokenObj.id_token}
+    const loggedinUser = {...res.data.user, googleId : response.googleId, token : res.data.token}
     dispatch(addUser(loggedinUser))
     console.log('loggedinUser in State', loggedinUser)
     localStorage.setItem('loggedinUser', JSON.stringify(loggedinUser))
     window.location.replace('/')
-    setTimeout(() => navigate('/'), 2000)
-    
   }
 
   const onFailure = (res:any) => {

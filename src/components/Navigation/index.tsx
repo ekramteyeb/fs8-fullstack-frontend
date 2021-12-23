@@ -23,10 +23,10 @@ export default function Navigation() {
   
   const navigate = useNavigate()
   return (
-    <Navbar bg={''} className="navbar" collapseOnSelect expand={false} >
+    <Navbar bg={''}  variant="dark" collapseOnSelect expand={false} >
       <Container fluid >
-        <Navbar.Toggle aria-controls="offcanvasNavbar" />
-        <Navbar.Offcanvas
+        <Navbar.Toggle aria-controls="offcanvasNavbar"  />
+        <Navbar.Offcanvas 
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
           placement="start"
@@ -39,7 +39,7 @@ export default function Navigation() {
                 <Nav.Link href="/login" >
                   <CustomButton
                     className="theme__btn purplebtn"
-                    color="outline-info"
+                    color="primary"
                     text='SignIn'
                   />
                 </Nav.Link>
