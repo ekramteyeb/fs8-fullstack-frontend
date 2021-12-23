@@ -16,7 +16,6 @@ export default function CustomButton({width, color, type,  text, onClick,classNa
       variant={color}
       type={type}
     >
-      
       {text}
     </Button>
   )

@@ -5,8 +5,8 @@ import DisplayProducts from '../../components/DisplayProducts'
 import SearchComponent from '../../components/Search'
 import useFetchProducts from '../../hooks/useFetchProducts'
 
-
 import './style.scss'
+
 export default function Home() {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('')
@@ -21,7 +21,7 @@ export default function Home() {
     items.push(
       <PageItem key={number} active={number === active}>
         {number}
-      </PageItem>,
+      </PageItem>
     );
   }
   return (
@@ -36,7 +36,11 @@ export default function Home() {
         />
         <>
           
-          <select name="cars" onChange={(e) => setCategory(e.target.value)} id="category">
+          <select
+            name="cars"
+            onChange={(e) => setCategory(e.target.value)} 
+            id="category"
+          >
             <option value="">Category</option>
             <option value="mobile">mobile</option>
             <option value="tv">tv</option>
@@ -45,8 +49,11 @@ export default function Home() {
           </select> 
         </>
         <>
-          
-          <select name="price" onChange={(e) => setDesending(e.target.value)} id="price">
+          <select 
+            name="price" 
+            onChange={(e) => setDesending(e.target.value)}
+            id="price"
+          >
             <option value="">Price</option>
             <option value="asc">Chepest</option>
             <option value="desc">expensive</option>
@@ -54,7 +61,12 @@ export default function Home() {
         </>
       </div>
       <div className="search__result">
-        {search || category ? <small>{data.length} items met the search criteria</small> : ''}
+        {search || category ? 
+          <small>
+            {data.length} items met the search criteria
+          </small> :
+          ''
+        }
       </div>
       <hr></hr>
       <DisplayProducts products={data}/> <br/><br/><br/>

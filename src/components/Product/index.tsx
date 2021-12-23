@@ -1,10 +1,9 @@
 import { Card } from "react-bootstrap"
-//import CustomButton from "../Button"
 import Carousel from "../Carousel"
 import ProductType from '../../types/product'
 
 import './style.scss'
-//import { Link } from "react-router-dom"
+
  type PropTypes = { 
    product : ProductType ,
    likeColor?: string,

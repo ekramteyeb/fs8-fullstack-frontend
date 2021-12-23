@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
-//import { useDispatch } from 'react-redux'
 import { Link} from 'react-router-dom'
 import Notification from '../../components/Notification'
-//import { addUser } from '../../redux/actions'
-//import {fetchUser} from '../../utils/fetchUser'
 import { sendEmail } from '../../utils/sendEmail'
+
 import './style.scss'
 
 export default function ForgotPassword(){
@@ -13,7 +11,6 @@ export default function ForgotPassword(){
   const [findEmail, setFindEmail] = useState('')
   const [error, setError] = useState('')
   const [color, setColor] = useState(false)
-  //const dispatch = useDispatch()
   
   const clearNotify = () => {
     setTimeout(()=>{ setError('')}, 4000)

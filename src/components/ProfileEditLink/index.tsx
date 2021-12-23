@@ -1,8 +1,7 @@
-import { NavDropdown } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { AppState } from "../../types";
-
+import { NavDropdown } from "react-bootstrap"
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+import { AppState } from "../../types"
 
 import './style.scss'
 
@@ -11,10 +10,16 @@ export default function ProfileEditLink(){
  
   return (
     <NavDropdown
-        
       title={
-        //<p className="nav__title">{`Hi ${user.firstName ? user.firstName : 'User'}`}</p>
-        <div className="nav__title">{`Welcome ${user.firstName ? user.firstName : 'User'} `}<i className="bi bi-person-square"></i></div>
+        <div className="nav__title">
+          {
+            `Welcome ${user.firstName ? 
+              user.firstName :
+              'User'} `
+          }
+          <i className="bi bi-person-square">
+          </i>
+        </div>
       } 
       id="offcanvasNavbarDropdown">
       <NavDropdown.Item 

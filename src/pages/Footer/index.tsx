@@ -33,7 +33,10 @@ export default function Footer(){
             className="me-2 search__bar"
             aria-label="Search"
           />
-          <Button variant="outline-success" onClick={() => alert(email)}>Send</Button>
+          <Button variant="outline-success" 
+            onClick={() => alert(email)}>
+            Send
+          </Button>
         </Form> 
         <div className="footer__social__div">
           <ul className="footer__social">

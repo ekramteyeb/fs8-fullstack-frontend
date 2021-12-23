@@ -1,15 +1,13 @@
-import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-
 import { AppState } from '../../types'
-/* import ProductDetail from '../../components/ProductDetial' */
 import { Button, Card, Container } from 'react-bootstrap'
 import Carousel from '../../components/Carousel'
 import CustomButton from '../../components/Button'
 import { addProduct } from '../../redux/actions'
 
 import './product.scss'
+
 export default function Product() {
   const dispatch = useDispatch()
   const { id } = useParams()
@@ -27,18 +25,30 @@ export default function Product() {
   const printStar = (x: number) => {
     let stars = []
     for(let i = 0; i < x ; i++){
-      stars.push(<i className="fa fa-star detail__fa__icons" aria-hidden="true"></i>)
+      stars.push(
+        <i 
+          className="fa fa-star detail__fa__icons" 
+          aria-hidden="true"
+        >
+        </i>
+      )
     }
     return stars
   }
   return (
     <Container className="product__detail__div">
       <div className="left">
-        <Carousel className="carousel__detail" image={product.image} height='195vh' />
+        <Carousel 
+          className="carousel__detail" 
+          image={product.image} 
+          height='195vh' 
+        />
       </div>
       <div className="right">
         <Card className='product__detail__card'>
-          <small className='product__detail__code'>#{product.productCode}</small>
+          <small className='product__detail__code'>
+            #{product.productCode}
+          </small>
           <Card.Body>
             <Card.Title>{product.name}</Card.Title>
             <hr></hr>
@@ -54,19 +64,55 @@ export default function Product() {
             <div className="product_detail__details">
               <hr></hr>
 
-            Customer rating : <div className="product__detail__stars">{product.rating > 0 ? printStar(product.rating).map((p, index)=> <span key={index}>{p}</span>) : 0}</div> 
+            Customer rating : 
+              <div className="product__detail__stars">
+                {product.rating > 0 ? 
+                  printStar(product.rating).map((p, index)=> 
+                    <span key={index}>
+                      {p}
+                    </span>
+                  ) :
+                  0
+                }
+              </div> 
               {product.users.length} items sold
               <hr></hr>
             
             Technical info : 
               <ul>
-                {product.techInfo.map((info:string) => <li key={info}>{info}</li>)}
+                {product.techInfo.map((info:string) =>
+                  <li key={info}>
+                    {info}
+                  </li>
+                )
+                }
               </ul>
               <hr></hr>
-              <Link to="/"><CustomButton color="info" text="Back" /></Link>{' '}
-              <Button variant="success" onClick={() => dispatch(addProduct(product))}>add to cart</Button>{' '}
+              <Link to="/">
+                <CustomButton 
+                  color="info" 
+                  text="Back" 
+                />
+              </Link>
+              {' '}
+              <Button 
+                variant="success" 
+                onClick={() => 
+                  dispatch(addProduct(product))
+                }
+              >
+                add to cart
+              </Button>
+              {' '}
               {
-                user.isAdmin ? <Link to="/admin"><CustomButton color="warning" text="Back to Admin" /></Link> : ''
+                user.isAdmin ? 
+                  <Link to="/admin">
+                    <CustomButton 
+                      color="warning" 
+                      text="Back to Admin" 
+                    />
+                  </Link> : 
+                  ''
               }
             </div>
           </Card.Body>

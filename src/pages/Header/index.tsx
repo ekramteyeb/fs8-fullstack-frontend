@@ -1,11 +1,8 @@
-
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-//import { BiCart } from 'react-icons/bi'
 import Cart from "../../components/Cart";
 import OffCanvasFavorite from "../../components/Favorite";
 import Navigation from "../../components/Navigation";
-//import SearchComponent from "../../components/Search"
 import ProfileEditLink from "../../components/ProfileEditLink";
 import { AppState } from "../../types";
 
@@ -21,12 +18,8 @@ export default function Header (){
     0
   const cartFromLocal  = state.product.inCart.length
   const cart = cartFromDb + cartFromLocal
-  
   const products = state.product.favorite
-  
-  /* const handleChange = (e:any) => {
-    alert(e.target.value)
-  } */
+
   return (
     
     <header className='header'>
@@ -36,15 +29,7 @@ export default function Header (){
           <h1 className="logo">Daki e-commerce</h1>
         </Link>
       </div>
-      {/* { 
-        loggedUser.email !== '' ?
-          <div className='header__picture'>
-            <Link to='/editprofile'>
-              { loggedUser.avatar ? <img className='header__picture' src={loggedUser.avatar} alt="user"/> : ''}
-            </Link> 
-          </div>: 
-          ''
-      } */}
+      
       <div className="header__icons">
         {loggedUser.email ? <ProfileEditLink /> : ''}
         <OffCanvasFavorite data={products}/>

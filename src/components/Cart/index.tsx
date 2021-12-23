@@ -1,12 +1,11 @@
-//import { BiCart } from 'react-icons/bi'
-//import { Link } from 'react-router-dom'
-
 import './style.scss'
+
 type Props = {
   items: number
   onClick?: (input: React.BaseSyntheticEvent) => void
   element : any
 }
+
 export default function Cart({ items, element, onClick }: Props) {
   return (
     <div className="cart__wrapper">

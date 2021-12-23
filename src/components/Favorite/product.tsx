@@ -9,8 +9,6 @@ import './style.scss'
 export default function FavoriteProduct() {
   const state = useSelector((state : AppState) => state)
   const products = state.product.favorite
-  //const user = state.user.loggedIn
-  
   const dispatch = useDispatch()
 
   return (
@@ -29,7 +27,10 @@ export default function FavoriteProduct() {
                 onClick={function(){
                   product.quantity > 1 ? 
                     dispatch(removeFavorite(product.product)) : 
-                    (() => window.confirm('Remove product from list?') ? dispatch(removeFavorite(product.product)): '')()
+                    (() => window.confirm('Remove product from list?') ? 
+                      dispatch(removeFavorite(product.product)): 
+                      '')
+                    ()
                 } 
                 }>
                 x

@@ -55,7 +55,14 @@ export default function ResetPassword(){
   }
   return (
     <div className='login__form__div'>
-      { error ? <Notification message={error} color={color}/> : ''}
+      { error ? 
+        <Notification 
+          message={error} 
+          color={color}
+        /> 
+        : 
+        ''
+      }
       <div className='login__text__div'>
         <h3>Reset passowrd</h3>
         <Link  to='/login'>Back to Login</Link>
@@ -106,8 +113,6 @@ export default function ResetPassword(){
           <GoogleLogin />
         </div>
       </Form>
-
-
     </div>
   )
 }

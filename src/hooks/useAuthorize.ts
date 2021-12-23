@@ -7,7 +7,6 @@ const useStoreC = (): void => {
   const inCartState = useSelector((state: AppState) => state.product.inCart)
 
   useEffect(() => {
-    console.log(inCartState)
     localStorage.setItem('inCartState', JSON.stringify(inCartState))
   }, [inCartState])
 }

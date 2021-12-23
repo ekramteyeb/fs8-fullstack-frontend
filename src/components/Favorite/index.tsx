@@ -1,15 +1,13 @@
-import { useState } from "react";
-import {  Offcanvas } from "react-bootstrap";
-//import { Link } from "react-router-dom";
-
-import Cart from "../Cart";
-import FavoriteProduct from "./product";
+import { useState } from "react"
+import {  Offcanvas } from "react-bootstrap"
+import Cart from "../Cart"
+import FavoriteProduct from "./product"
 
 export default function OffCanvasFavorite({data}:any) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   return (
     <>
       
@@ -28,5 +26,5 @@ export default function OffCanvasFavorite({data}:any) {
         </Offcanvas.Body>
       </Offcanvas>
     </>
-  );
+  )
 }

@@ -13,7 +13,7 @@ const useFetch = (
   isAsending: string,
   category: string
 ): [Error | unknown, Product[]] => {
-  //const [data, setData] = useState<Product[]>([])
+  
   const [error, setError] = useState<unknown>('')
   const [filterdProducts, setFilterdProducts] = useState<Product[]>([])
   const data = useSelector((state: AppState) => state.product.allProducts)
@@ -36,30 +36,18 @@ const useFetch = (
           product.color.toLowerCase()
         ) 
         .includes(search.toLowerCase())
-    ).filter((product:Product) => category !== '' ? product.category === category : product)
-      .sort((a,b) => isAsending === 'asc' ? a.price - b.price : isAsending === 'desc' ? b.price - a.price : b.price )
-    //console.log(filterdProducts, "filterdProducts ");
-    /* // sort array of objects by property name/key
-    let sortArray = (arr: [] | an y, sortBy: string, isAsending: boolean) => {
-      //let firstproduct = arr.length > 0 ? arr[arr.length - 1][sortBy] : "";
-      if (arr.length > 0) {
-        let sorted =
-          typeof arr[0][sortBy] === 'number'
-            ? arr.sort((a: any, b: any) => a[sortBy] - b[sortBy])
-            : Array.isArray(arr[0][sortBy])
-              ? arr.sort((a: any, b: any) => a[sortBy].length - b[sortBy].length)
-              : arr.sort((a: any, b: any) => {
-                if (a[sortBy].toLowerCase() > b[sortBy].toLowerCase()) return 1
-                if (a[sortBy].toLowerCase() < b[sortBy].toLowerCase()) return -1
-                return 0
-              })
-
-        return isAsending ? sorted : sorted.reverse()
-      }
-    } */
-    // sortArray(filterdProducts, sortColumn, sortOrder)
-    // console.log(filterdSortedCountries, "filterd and sorted countries");
-
+    ).filter((product:Product) => 
+      category !== '' ? 
+        product.category === category :
+        product
+    )
+      .sort((a,b) => 
+        isAsending === 'asc' ? 
+          a.price - b.price : 
+          isAsending === 'desc' ?
+            b.price - a.price :
+            b.price 
+      )
     setFilterdProducts(filterdProducts)
   }, [data, search, category, isAsending])
 

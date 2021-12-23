@@ -1,17 +1,18 @@
-import { useState } from "react";
-import { Container, Nav } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import Product from "../../components/ProductAdmin";
-import { AppState } from "../../types";
-import { Users } from "./users";
-import { Orders } from "./orders";
-import CustomButton from "../../components/Button";
-import CreateProduct  from "./product/createProduct";
-import Notification from "../../components/Notification";
+import { useState } from "react"
+import { Container, Nav } from "react-bootstrap"
+import { useSelector, useDispatch } from "react-redux"
+import Product from "../../components/ProductAdmin"
+import { AppState } from "../../types"
+import { Users } from "./users"
+import { Orders } from "./orders"
+import CustomButton from "../../components/Button"
+import CreateProduct  from "./product/createProduct"
+import Notification from "../../components/Notification"
+import { deleteProduct } from "../../utils/manageProduct"
+import { removeProduct } from "../../redux/actions"
 
 import './style.scss'
-import { deleteProduct } from "../../utils/manageProduct";
-import { removeProduct } from "../../redux/actions";
+
 export const Products = ({products } : any) => {
   return(
     <>
@@ -44,22 +45,20 @@ export default function AdminPage(){
     const confirm = window.confirm('are you sure to delete the product ?')
     if(confirm) {
       const response = await deleteProduct(id, token)
-      console.log(response?.status, 'response status')
       if(response.status === 204){
         setMessage('Delete is successfull')
         dispatch(removeProduct(id))
         setColor(true)
-        window.location.replace('/admin') 
-        setTimeout(() => setMessage(''), 2000)
-        
-      }else{
+        setTimeout(function(){
+          setMessage('')
+          window.location.replace('/admin')},
+        2000)
+      } 
+      else{
         setMessage('Delete is not successfull')
         setColor(false)
       }
-    }else{
-
     }
-       
   }
   const deliver = (casee:string) : any => {
     switch(casee){
@@ -90,7 +89,6 @@ export default function AdminPage(){
       )
     
     }
-    
   }
   return (
     <>
@@ -100,18 +98,29 @@ export default function AdminPage(){
           {products.length}
           <Nav className="admin__nav" variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
-              <Nav.Link onClick={() => setSwith('products')} href="#">Products</Nav.Link>
+              <Nav.Link 
+                onClick={() => setSwith('products')}
+                href="#">
+                 Products
+              </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link onClick={() => setSwith('users')} href="#" /* eventKey="/admin/users" */>Users</Nav.Link>
+              <Nav.Link 
+                onClick={() => setSwith('users')} 
+                href="#" >
+                Users
+              </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link onClick={() => setSwith('orders')} href="#" /* eventKey="/admin/orders" */>
+              <Nav.Link 
+                onClick={() => setSwith('orders')} 
+                href="#">
                Orders
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link onClick={() => setSwith('carts')} href="#">
+              <Nav.Link onClick={() => setSwith('carts')} 
+                href="#">
                Carts
               </Nav.Link>
             </Nav.Item>
@@ -122,17 +131,18 @@ export default function AdminPage(){
             </Nav.Item>
             <Nav.Item>
               <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <CustomButton text="add product" onClick={() => setSwith('addproduct')}/>
+                <CustomButton 
+                  text="add product"
+                  onClick={() => setSwith('addproduct')}
+                />
               </h3>
             </Nav.Item>
           </Nav>
         </div>
         <div className="admin__main">
-          
           {
             deliver(switche)
           }
-          
         </div>
       </Container>
     </>

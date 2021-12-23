@@ -1,10 +1,9 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { Table } from "react-bootstrap"
 import { AppState } from "../../../types"
 import { User } from "../../../types/user"
-//import UserComponent from '../../../components/User'
-import { Table } from "react-bootstrap"
 import CustomButton from "../../../components/Button"
 
 import './style.scss'
@@ -13,7 +12,7 @@ export const Users = () => {
   const [users, setUsers] = useState([])
   const url = 'http://localhost:3001/api/v1/users'
   const user = useSelector((state:AppState) => state.user.loggedIn)
-  console.log('user from admim users page', user)
+
   useEffect(() => {
     axios.get(url, {
       method: 'GET',
@@ -45,7 +44,12 @@ export const Users = () => {
         <tbody>
           { users?.map((u: User) => 
             <tr key={u.id}>
-              <td><img className="user__avatar" src={u.avatar} alt={'user pictur'}/></td>
+              <td>
+                <img className="user__avatar" 
+                  src={u.avatar} 
+                  alt={'user pictur'}
+                />
+              </td>
               <td>{u.firstName}</td>
               <td>{u.userName}</td>
               <td>{u.email}</td>

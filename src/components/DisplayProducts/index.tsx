@@ -7,7 +7,6 @@ import './style.scss'
 
 type PropTypes = {
     products: any[]
-
 }
 export default function DisplayProducts({products}: PropTypes){
   const dispatch = useDispatch()

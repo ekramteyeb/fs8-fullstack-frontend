@@ -1,32 +1,33 @@
 import axios from 'axios'
-import React from 'react'
 import { useDispatch } from 'react-redux'
 import { GoogleLogin } from 'react-google-login'
 import { refreshTokenSetup } from '../../utils/refreshTokenSetup'
 import { addUser } from '../../redux/actions'
+import { Service } from '../../utils/service'
 
 import './style.scss'
 
 function Login() {
+  const service = new Service()
   const dispatch = useDispatch()
-  const clientId : any = '515353806091-61sk3rjrksrenpccphupbd440fu2b8aq.apps.googleusercontent.com'
   const onSuccess = async (response: any) => {
-    console.log('Login Success: currentUser:', response);
     let res = await axios.post(
       'http://localhost:3001/api/v1/users/google',
       {id_token:response.tokenObj.id_token}
     )
     refreshTokenSetup(response);
     //set the state
-    const loggedinUser = {...res.data.user, googleId : response.googleId, token : res.data.token}
+    const loggedinUser = {
+      ...res.data.user, 
+      googleId :response.googleId, 
+      token :res.data.token
+    }
     dispatch(addUser(loggedinUser))
-    console.log('loggedinUser in State', loggedinUser)
     localStorage.setItem('loggedinUser', JSON.stringify(loggedinUser))
     window.location.replace('/')
   }
 
   const onFailure = (res:any) => {
-    console.log('Login failed: res:', res);
     alert(
       `Failed to login.Please try again`
     );
@@ -35,7 +36,7 @@ function Login() {
   return (
     <div className='login'>
       <GoogleLogin
-        clientId={clientId}
+        clientId={service.getClientId}
         buttonText="Login using your google acount"
         onSuccess={onSuccess}
         onFailure={onFailure}

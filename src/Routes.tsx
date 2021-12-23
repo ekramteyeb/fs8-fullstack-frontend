@@ -16,10 +16,9 @@ import Signup from './pages/Signup'
 import EditProfile from './pages/EditProfile'
 import AdminPage from './pages/Admin'
 const Routes = () => (
-  <>
+  <main>
     <Switch>
       <Route path="/" element={<Home />} />
-      {/* <Route path="/products/product" element={<Product />} /> */}
       <Route path="/products" element={<Products />} />
       <Route path="/products/:id" element={<Product />} />
       <Route path="/login" element={<LogIn />} />
@@ -33,7 +32,7 @@ const Routes = () => (
       {/* <Route path="/admin/users" element={<Users />} />
       <Route path="/admin/orders" element={<Orders />} /> */}
     </Switch>
-  </>
+  </main>
 )
 
 export default Routes

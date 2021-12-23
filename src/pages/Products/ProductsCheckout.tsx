@@ -9,13 +9,22 @@ import Image from "../../components/Image"
 import './style.scss'
 
 export default function Products() {
+  
   const state = useSelector((state : AppState) => state)
+  const dispatch = useDispatch()
   const products = state.product.inCart
   const user = state.user.loggedIn
   const freeShippingAmout = 850
-  const totalPrice = products.reduce((a, b) => a + (b.quantity * b.product.price), 0)
-  const shippingCost = (products.length === 0) ? 0 : (totalPrice > freeShippingAmout) ? 0 : 10
-  const dispatch = useDispatch()
+  
+  const totalPrice = products.reduce(
+    (a, b) => a + (b.quantity * b.product.price), 
+    0
+  )
+  const shippingCost = (products.length === 0) ? 
+    0 : 
+    (totalPrice > freeShippingAmout) ?
+      0 : 
+      10
 
   return (
     <Container className='cart__items'>
@@ -31,7 +40,11 @@ export default function Products() {
       <ListGroup >
         {products.map(product => 
           <ListGroup.Item className='product__list' key={product.product.id}>
-            <Image src={product.product.image} width='150px' alt={product.product.name}/>
+            <Image 
+              src={product.product.image} 
+              width='150px' 
+              alt={product.product.name}
+            />
             <div>{product.product.name}</div>
             <div>
               {`${ (product.quantity * product.product.price).toLocaleString()} €`}
@@ -51,7 +64,10 @@ export default function Products() {
                 onClick={function(){
                   product.quantity > 1 ? 
                     dispatch(removeCart(product.product)) : 
-                    (() => window.confirm('Remove product from cart?') ? dispatch(removeCart(product.product)): '')()
+                    (() => window.confirm('Remove product from cart?') ?
+                      dispatch(removeCart(product.product)): 
+                      '')
+                    ()
                 } 
                 }>
                 -
@@ -131,12 +147,25 @@ export default function Products() {
               <hr></hr>
               <div>
                 <p>User name : {user.userName ? user.userName : ''} </p>
-                <p>Full name : {`${user.firstName ? user.firstName : ''} ${ user.lastName ? user.lastName : ''}`}</p>
+                <p>
+                  Full name : {`${user.firstName ? 
+                    user.firstName : 
+                    ''} ${ user.lastName ? 
+                    user.lastName : 
+                    ''}`
+                  }
+                </p>
                 <p>Shipping address : </p>
                 <p>Street : {user.address?.street}</p>
                 <p>P O Box  : {user.address?.postalCode}</p>
                 <p>Country : {user.address?.country}</p>
-                <Link to="/editprofile"><h5 className="product__list__inform">Please check the information above or Edit your  profile here</h5></Link>
+                <Link 
+                  to="/editprofile"
+                >
+                  <h5 className="product__list__inform">
+                    Please check the information above or Edit your  profile here
+                  </h5>
+                </Link>
                 
               </div>
               <hr></hr>

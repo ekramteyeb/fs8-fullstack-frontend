@@ -26,24 +26,32 @@ export default function SignupForm(){
         },
         body: JSON.stringify(user),
       })
-      const returnUser = await response.json()
-      setResult(returnUser.message) 
-      setColor(true)
-      setEmail('')
-      setPassword('')
+      const returnUser  = await response.json()
+      if(returnUser.status !== 'error'){
+        setResult(returnUser.message) 
+        setColor(true)
+        setEmail('')
+        setPassword('')
+      }else{
+        setResult(returnUser.message) 
+        setColor(false)
+      }
       setTimeout(()=>{ setResult('')}, 4000)
-      
     }catch(err){
       setColor(false)
       setTimeout(()=>{ setResult('')}, 4000)
       setResult('Something went wrong, pleas try again.')
       console.error('Error', err)
     }
-
   }  
   return (
     <div className="signup__form__div">
-      { result ? <Notification message={result} color={color}/> : ''}
+      { result ? 
+        <Notification 
+          message={result} 
+          color={color}
+        /> : ''
+      }
       <div className="signup__text__div">
         <h3>Sign up</h3>
         <Link  to="/login">Login</Link>
@@ -67,7 +75,15 @@ export default function SignupForm(){
         {' '}
         <Form.Group className="mb-3" controlId="formBasicPassword1">
           <Form.Label>Password *</Form.Label>
-          <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} required value={password} placeholder="Password" />
+          <Form.Control 
+            type="password" 
+            onChange={(e) => 
+              setPassword(e.target.value)
+            } 
+            required 
+            value={password} 
+            placeholder="Password" 
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox1">
           <Form.Check type="checkbox"  label="remember password" />
