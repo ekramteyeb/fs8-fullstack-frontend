@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeProduct } from '../../redux/actions';
 import { AppState } from '../../types';
 //import { Service } from '../../utils/service';
+import dotenv from 'dotenv'
 
 import './style.scss'
 
+dotenv.config()
 function Logout() {
   //const service = new Service()
-  const clientId : string | any = process.env.client_id
+  const REACT_APP_GOOGLE_ID : string | any = process.env.REACT_APP_GOOGLE_ID
 
   const dispatch = useDispatch()
   const products = useSelector((state:AppState) => state.product.inCart)
@@ -27,7 +29,7 @@ function Logout() {
     <div className='logout'>
       <GoogleLogout
         //clientId={service.getClientId}
-        clientId={clientId}
+        clientId={REACT_APP_GOOGLE_ID}
         buttonText='Logout'
         onLogoutSuccess={onSuccess}
       >
