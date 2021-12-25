@@ -9,8 +9,8 @@ import './style.scss'
 
 function Logout() {
   //const service = new Service()
-  const clientId : string | any = process.env.clientId
-  
+  const clientId : string | any = process.env.client_id
+
   const dispatch = useDispatch()
   const products = useSelector((state:AppState) => state.product.inCart)
 

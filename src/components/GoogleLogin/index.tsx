@@ -12,7 +12,7 @@ import './style.scss'
 dotenv.config()
 function Login() {
   //const service = new Service()
-  const clientId : string | any = process.env.clientId
+  const clientId : string | any = process.env.client_id
   const dispatch = useDispatch()
   const onSuccess = async (response: any) => {
     let res = await axios.post(
