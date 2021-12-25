@@ -3,13 +3,16 @@ import { useDispatch } from 'react-redux'
 import { GoogleLogin } from 'react-google-login'
 import { refreshTokenSetup } from '../../utils/refreshTokenSetup'
 import { addUser } from '../../redux/actions'
-import { Service } from '../../utils/service'
+import dotenv from 'dotenv'
+//import { Service } from '../../utils/service'
 import { BASE_URL } from '../../resources'
 
 import './style.scss'
 
+dotenv.config()
 function Login() {
-  const service = new Service()
+  //const service = new Service()
+  const clientId : string | any = process.env.clientId
   const dispatch = useDispatch()
   const onSuccess = async (response: any) => {
     let res = await axios.post(
@@ -37,7 +40,7 @@ function Login() {
   return (
     <div className='login'>
       <GoogleLogin
-        clientId={service.getClientId}
+        clientId={clientId}
         buttonText="Login using your google acount"
         onSuccess={onSuccess}
         onFailure={onFailure}

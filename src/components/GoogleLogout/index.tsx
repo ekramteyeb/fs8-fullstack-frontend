@@ -3,12 +3,14 @@ import { GoogleLogout } from 'react-google-login';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeProduct } from '../../redux/actions';
 import { AppState } from '../../types';
-import { Service } from '../../utils/service';
+//import { Service } from '../../utils/service';
 
 import './style.scss'
 
 function Logout() {
-  const service = new Service()
+  //const service = new Service()
+  const clientId : string | any = process.env.clientId
+  
   const dispatch = useDispatch()
   const products = useSelector((state:AppState) => state.product.inCart)
 
@@ -24,7 +26,8 @@ function Logout() {
   return (
     <div className='logout'>
       <GoogleLogout
-        clientId={service.getClientId}
+        //clientId={service.getClientId}
+        clientId={clientId}
         buttonText='Logout'
         onLogoutSuccess={onSuccess}
       >
