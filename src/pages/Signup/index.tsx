@@ -5,6 +5,7 @@ import Notification from '../../components/Notification'
 import GoogleLogin from '../../components/GoogleLogin'
 
 import './style.scss'
+import { BASE_URL } from "../../resources";
 
 export default function SignupForm(){
   const [email, setEmail] = useState('')
@@ -19,7 +20,7 @@ export default function SignupForm(){
       password
     }
     try {
-      const response =  await fetch('http://localhost:3001/api/v1/users/signup', {
+      const response =  await fetch(`${BASE_URL}/users/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

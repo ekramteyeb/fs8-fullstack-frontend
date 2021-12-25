@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap'
 //import { useDispatch } from 'react-redux'
 import { Link} from 'react-router-dom'
 import Notification from '../../components/Notification'
+import { BASE_URL } from '../../resources'
 //import { addUser } from '../../redux/actions'
 //import {fetchUser} from '../../utils/fetchUser'
 import { sendEmail } from '../../utils/sendEmail'
@@ -43,7 +44,7 @@ export default function Verification(){
     try {
       //forgot password in 
       const response = await sendEmail(
-        'http://localhost:3001/api/v1/users/verifycode', 
+        `${BASE_URL}/verifycode`, 
         code,
       )
       //destruct id , token 

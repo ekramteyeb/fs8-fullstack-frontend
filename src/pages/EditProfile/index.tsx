@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CustomButton from "../../components/Button";
 import Notification from '../../components/Notification'
 import { addUser } from "../../redux/actions";
+import { BASE_URL } from "../../resources";
 import { AppState } from "../../types";
 
 import './style.scss'
@@ -23,14 +24,7 @@ export default function EditProfile(){
   const loggedinUser = state.user.loggedIn
   const dispatch = useDispatch()
   const [suser , setSuser] = useState(initialuserState)
-  /* const [userName, setUserName] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('') */
   const [findPassword, setFindPassword] = useState('')
-  /* const [street, setStreet] = useState('')
-  const [postalCode, setPostalCode] = useState('')
-  const [country, setCountry] = useState('') */
   const [result, setResult] = useState('')
   const [color, setColor] = useState(false)
 
@@ -40,7 +34,7 @@ export default function EditProfile(){
   }
   // check the password 
   const checkPassword = async (id: string, password: string) => {
-    const response =  await fetch('http://localhost:3001/api/v1/users/checkPassword', {
+    const response =  await fetch(`${BASE_URL}/users/checkPassword`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +70,7 @@ export default function EditProfile(){
     }
   
     try {
-      const response : any =  await fetch(`http://localhost:3001/api/v1/users/${loggedinUser.id}`, {
+      const response : any =  await fetch(`${BASE_URL}/users/${loggedinUser.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

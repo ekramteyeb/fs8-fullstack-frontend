@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { BASE_URL } from '../resources'
 
-const url = 'http://localhost:3001/api/v1/products/'
+const url = `${BASE_URL}/products/`
 
 export const deleteProduct = async (
   id: string,

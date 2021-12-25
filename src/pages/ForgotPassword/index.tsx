@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { Link} from 'react-router-dom'
 import Notification from '../../components/Notification'
+import { BASE_URL } from '../../resources'
 import { sendEmail } from '../../utils/sendEmail'
 
 import './style.scss'
@@ -39,7 +40,7 @@ export default function ForgotPassword(){
     try {
       //forgot password in 
       const linkSentResponse = await sendEmail(
-        'http://localhost:3001/api/v1/users/forgotpassword', 
+        `${BASE_URL}/users/forgotpassword`, 
         email.trim(),
       )
       if(linkSentResponse === "Password reset link sent to your email account"){

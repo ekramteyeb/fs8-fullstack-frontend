@@ -5,6 +5,7 @@ import { Link} from 'react-router-dom'
 import GoogleLogin from '../../components/GoogleLogin'
 import Notification from '../../components/Notification'
 import { addUser } from '../../redux/actions'
+import { BASE_URL } from '../../resources'
 import {fetchUser} from '../../utils/fetchUser'
 import { loginorSignup } from '../../utils/loginorSignup'
 
@@ -25,7 +26,7 @@ export default function LogInForm(){
   const checkEmail = async (email: string) => {
     try{
       const response =  await fetch(
-        'http://localhost:3001/api/v1/users/checkEmail', 
+        `${BASE_URL}/users/checkEmail`, 
         {
           method: 'POST',
           headers: {
@@ -54,7 +55,7 @@ export default function LogInForm(){
     try {
       //login in 
       const returnUser = await loginorSignup(
-        'http://localhost:3001/api/v1/users/login', 
+        `$${BASE_URL}/users/login`, 
         email, 
         password
       )

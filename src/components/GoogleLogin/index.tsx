@@ -4,6 +4,7 @@ import { GoogleLogin } from 'react-google-login'
 import { refreshTokenSetup } from '../../utils/refreshTokenSetup'
 import { addUser } from '../../redux/actions'
 import { Service } from '../../utils/service'
+import { BASE_URL } from '../../resources'
 
 import './style.scss'
 
@@ -12,7 +13,7 @@ function Login() {
   const dispatch = useDispatch()
   const onSuccess = async (response: any) => {
     let res = await axios.post(
-      'http://localhost:3001/api/v1/users/google',
+      `${BASE_URL}/users/google`,
       {id_token:response.tokenObj.id_token}
     )
     refreshTokenSetup(response);

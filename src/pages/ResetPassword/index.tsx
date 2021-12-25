@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap'
 import { Link} from 'react-router-dom'
 import GoogleLogin from '../../components/GoogleLogin'
 import Notification from '../../components/Notification'
+import { BASE_URL } from '../../resources'
 import { resetpassword } from '../../utils/resetpassword'
 
 import './style.scss'
@@ -26,7 +27,7 @@ export default function ResetPassword(){
     try {
       //send new password 
       const response = await resetpassword(
-        'http://localhost:3001/api/v1/users/resetpassword', 
+        `${BASE_URL}/users/resetpassword`, 
         password, 
         confirmPassword,
         tokenl,

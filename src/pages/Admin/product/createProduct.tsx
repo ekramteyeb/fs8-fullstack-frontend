@@ -7,6 +7,7 @@ import Notification from '../../../components/Notification'
 import { addProduct } from "../../../redux/actions"
 
 import './style.scss'
+import { BASE_URL } from "../../../resources"
 
 const initialValues = {
   name:'',
@@ -37,7 +38,7 @@ export default function CreateProduct(){
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try{
-      const response =  await axios.post('http://localhost:3001/api/v1/products', 
+      const response =  await axios.post(`${BASE_URL}/products`, 
         values, 
         {
           headers: {

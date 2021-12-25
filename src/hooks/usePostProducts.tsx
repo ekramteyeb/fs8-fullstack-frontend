@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+import { BASE_URL } from '../resources'
 import { AppState} from '../types'
 
 const usePostUser = async ()  => {
@@ -6,7 +7,7 @@ const usePostUser = async ()  => {
   try {
     const {id, } = state.user.loggedIn
     const user = {id, }
-    const response =  await fetch(`http://localhost:3001/api/v1/users/${state.user.loggedIn.id}`, {
+    const response =  await fetch(`${BASE_URL}/users/${state.user.loggedIn.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -14,7 +15,7 @@ const usePostUser = async ()  => {
       },
       body: JSON.stringify(state.user.loggedIn),
     })
-    const url = `http://localhost:3001/api/v1/products${user.id}`
+    const url = `${BASE_URL}/products${user.id}`
     console.log(url, response)
   }catch(error){
     console.log(error)

@@ -4,11 +4,12 @@ import { useSelector } from "react-redux"
 import { AppState } from "../../../types"
 import { Table } from "react-bootstrap"
 import CustomButton from "../../../components/Button"
+import { BASE_URL } from "../../../resources"
 
 export const Orders = () => {
 
   const [orders, setOrders] = useState([])
-  const url = 'http://localhost:3001/api/v1/orders'
+  const url = `${BASE_URL}/orders`
   const user = useSelector((state:AppState) => state.user.loggedIn)
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export const Orders = () => {
     }).catch(error => {
       console.log(error);
     })
-  },[user.token])
+  },[user.token,url])
 
   return(
     <div className="user__container">

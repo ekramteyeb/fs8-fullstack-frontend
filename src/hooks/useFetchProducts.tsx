@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { AppState} from '../types'
 import Product  from '../types/product'
+import { BASE_URL } from '../resources'
 
 const useFetch = (
   search: string,
@@ -20,12 +21,12 @@ const useFetch = (
   
   const dispatch = useDispatch()
 
-  const url = 'http://localhost:3001/api/v1/products'
+  const url = `${BASE_URL}/products`
 
   useEffect(() => {
     dispatch(fetchProducts(url))
     setError('')
-  }, [dispatch])
+  }, [dispatch, url])
 
   useEffect(() => {
     let filterdProducts = data.filter((product: Product) =>
