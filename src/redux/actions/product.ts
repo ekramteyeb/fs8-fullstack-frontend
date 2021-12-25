@@ -81,5 +81,8 @@ export function fetchProducts(url: string) {
         localStorage.setItem('allProducts', JSON.stringify(products))
         dispatch(fetchAllProducts(products))
       })
+      .catch((error) => {
+        console.log(error.message, ' products')
+      })
   }
 }

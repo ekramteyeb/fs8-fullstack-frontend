@@ -34,7 +34,6 @@ export default function ResetPassword(){
       )
       //destruct id , token 
       if(response === 'Password reset successful'){
-       
         setError('Password reset is successfull, please login')
         setColor(true)
         setConfirmPassword('')
@@ -44,12 +43,12 @@ export default function ResetPassword(){
           window.location.replace('/login') 
         }, 4000)
       }else{
-        setError('Something went wrong, please try again.')
+        setError('The link expired please try again')
         setColor(false)
         clearNotify()
       }
     }catch(err){
-      setError('the link expired please try again.')
+      setError('Something went wrong, please try again.')
       window.location.replace('/login') 
       clearNotify()
     }

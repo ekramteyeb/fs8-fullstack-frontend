@@ -55,7 +55,7 @@ export default function LogInForm(){
     try {
       //login in 
       const returnUser = await loginorSignup(
-        `$${BASE_URL}/users/login`, 
+        `${BASE_URL}/users/login`, 
         email, 
         password
       )
@@ -64,6 +64,7 @@ export default function LogInForm(){
       if(token){
         //when login is success full fetch the user details from db
         const user = await fetchUser(id, token)
+        console.log('user from login fetch', user)
         if(user){
           const loggedinUser = {...user, googleId : '',token : token}
           dispatch(addUser(loggedinUser))
@@ -79,7 +80,7 @@ export default function LogInForm(){
         setTimeout(function(){
           setError('')
           window.location.replace('/') 
-        }, 1000)
+        }, 5000)
         setError('Logged in   successfully') 
       }else{
         setError('Login failed email/password is not valid') 
