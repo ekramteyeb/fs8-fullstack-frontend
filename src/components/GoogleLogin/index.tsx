@@ -12,7 +12,7 @@ require('dotenv').config()
 
 function Login() {
   //const service = new Service()
-  const REACT_APP_client_id : string | any = process.env.REACT_APP_client_id
+  const client_id : string | any = process.env.client_id
   
   const dispatch = useDispatch()
   const onSuccess = async (response: any) => {
@@ -41,7 +41,7 @@ function Login() {
   return (
     <div className='login'>
       <GoogleLogin
-        clientId={REACT_APP_client_id}
+        clientId={client_id}
         buttonText="Login using your google acount"
         onSuccess={onSuccess}
         onFailure={onFailure}
