@@ -8,7 +8,6 @@ import { addUser } from '../../redux/actions'
 import { BASE_URL } from '../../resources'
 
 import './style.scss'
-require('dotenv').config()
 
 function Login() {
   //const service = new Service()

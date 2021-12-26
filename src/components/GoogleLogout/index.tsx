@@ -8,7 +8,6 @@ import { AppState } from '../../types';
 
 import './style.scss'
 
-require('dotenv').config()
 function Logout() {
   //const service = new Service()
   const REACT_APP_client_id : string | any = process.env.REACT_APP_client_id
