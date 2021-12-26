@@ -11,7 +11,7 @@ import './style.scss'
 dotenv.config()
 function Logout() {
   //const service = new Service()
-  const client_id : string | any = process.env.client_id
+  const REACT_APP_client_id : string | any = process.env.REACT_APP_client_id
 
   const dispatch = useDispatch()
   const products = useSelector((state:AppState) => state.product.inCart)
@@ -29,7 +29,7 @@ function Logout() {
     <div className='logout'>
       <GoogleLogout
         //clientId={service.getClientId}
-        clientId={client_id}
+        clientId={REACT_APP_client_id}
         buttonText='Logout'
         onLogoutSuccess={onSuccess}
       >
