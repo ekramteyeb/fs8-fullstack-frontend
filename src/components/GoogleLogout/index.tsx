@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeProduct } from '../../redux/actions';
 import { AppState } from '../../types';
 //import { Service } from '../../utils/service';
-import dotenv from 'dotenv'
+
 
 import './style.scss'
 
-dotenv.config()
+require('dotenv').config()
 function Logout() {
   //const service = new Service()
   const REACT_APP_client_id : string | any = process.env.REACT_APP_client_id
