@@ -1,6 +1,8 @@
 .container__products {
   margin-top: 59px;
   text-align: center;
+  width: 94vw;
+  margin: auto;
 }
 .jumbotron {
   background: url('../../images/phoneshop.jpeg');
@@ -9,8 +11,8 @@
   min-height: 400px;
   background-color: #24588a;
   /* border: solid #24588a 1vh; */
-  margin-left: -9px;
-  margin-right: -9px;
+  margin-left: -0px;
+  margin-right: -0px;
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
@@ -36,4 +38,14 @@
 .search__result {
   color: brown;
   padding-top: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container__products {
+    width: 94vw;
+    font-size: medium;
+  }
+  .jumbotron {
+    height: 10px;
+  }
 }

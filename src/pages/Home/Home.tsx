@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Container, Pagination } from 'react-bootstrap'
+import { Pagination } from 'react-bootstrap'
 import PageItem from 'react-bootstrap/PageItem'
 import DisplayProducts from '../../components/DisplayProducts'
 import SearchComponent from '../../components/Search'
@@ -25,7 +25,7 @@ export default function Home() {
     );
   }
   return (
-    <Container fluid className='container__products'>
+    <div className='container__products'>
       <div className="jumbotron">
         <h1 className="display-4">For your favorite Mobile Choices!</h1>
       </div>
@@ -72,6 +72,6 @@ export default function Home() {
       <DisplayProducts products={data}/> <br/><br/><br/>
       <Pagination size='lg'>{items}</Pagination>
       {(error !== '') ? console.log(error, 'error') : ''}
-    </Container>
+    </div>
   )
 }

@@ -4,9 +4,9 @@
   align-items: center;
   position: fixed;
   border-top: solid white 1px;
-  border-left: solid white 1px;
+  border-left: solid #ffffff 1px;
   top: 0;
-  width: 100%;
+  width: 98vw;
   margin: auto;
   z-index: 999;
   border-radius: 0.5em;
@@ -60,4 +60,16 @@
   display: block;
   color: red;
   font-size: 12px;
+}
+@media only screen and (max-width: 600px) {
+  .header {
+    width: 94vw;
+    margin: auto;
+    border: solid red;
+    margin-left: 3vw;
+    font-size: medium;
+  }
+  body {
+    background-color: lightblue;
+  }
 }

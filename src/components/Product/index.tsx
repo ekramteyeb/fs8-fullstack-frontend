@@ -34,6 +34,7 @@ likeColor
   }
   return (
     <div className='product__div'>
+      
       <Card className='product__card' >
         <div className='product__top'>
           <small className='product__code'>
@@ -48,24 +49,34 @@ likeColor
             <i className="fa fa-heart" style={style} ></i>
           </div>
         </div>
+        
         <Carousel className="carousel" image={image} height='20vh' />
         
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
             Price {price} € 
-            <span className="product__icons__div">
-              <i className="fa fa-star" aria-hidden="true">{' '}{rating}</i>
-              <span
-                className="product__add__icon"  
-                role='button' 
-                tabIndex={0} 
-                onKeyPress={() => alert('me')} 
-                onClick={handleAdd}>
-                <i className="bi bi-bag-plus"></i>
-              </span>
-            </span>
           </Card.Text>
+          <div className="product__icons__div">
+            
+            <i className="fa fa-star" aria-hidden="true">{' '}{rating}</i>
+            <span
+              className="product__detail__icon"  
+              role='button' 
+              tabIndex={0} 
+              onKeyPress={() => alert('me')} 
+              onClick={handleAdd}>
+              <i className="fa fa-info"></i>
+            </span>
+            <span
+              className="product__add__icon"  
+              role='button' 
+              tabIndex={0} 
+              onKeyPress={() => alert('me')} 
+              onClick={handleAdd}>
+              <i className="bi bi-bag-plus"></i>
+            </span>
+          </div>
         </Card.Body>
       </Card>
     </div>

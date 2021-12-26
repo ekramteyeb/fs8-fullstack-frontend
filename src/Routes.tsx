@@ -15,8 +15,9 @@ import ResetPassword from './pages/ResetPassword'
 import Signup from './pages/Signup'
 import EditProfile from './pages/EditProfile'
 import AdminPage from './pages/Admin'
+import { Container } from 'react-bootstrap'
 const Routes = () => (
-  <main>
+  <Container>
     <Switch>
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
@@ -32,7 +33,7 @@ const Routes = () => (
       {/* <Route path="/admin/users" element={<Users />} />
       <Route path="/admin/orders" element={<Orders />} /> */}
     </Switch>
-  </main>
+  </Container>
 )
 
 export default Routes
