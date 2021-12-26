@@ -11,7 +11,7 @@ import { AppState } from '../../types'
 import GoogleLogout from '../../components/GoogleLogout'
 
 import './style.scss'
-import { Link } from 'react-router-dom'
+
 export default function Navigation() {
 
   const state = useSelector((state:AppState) => state)
@@ -41,13 +41,13 @@ export default function Navigation() {
                     'block'
                 }}
               >
-                <Link to="/login">
+                <Nav.Link href="/login" >
                   <CustomButton
                     className="theme__btn purplebtn"
                     color="primary"
                     text='Sign In'
                   />
-                </Link>
+                </Nav.Link>
               </Nav>
               <Nav 
                 className="justify-content-end flex-grow-1 pe-3" 
