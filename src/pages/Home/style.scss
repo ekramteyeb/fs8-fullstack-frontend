@@ -1,7 +1,7 @@
 .container__products {
   margin-top: 59px;
   text-align: center;
-  width: 94vw;
+  width: 100%;
   margin: auto;
 }
 .jumbotron {
@@ -11,13 +11,13 @@
   min-height: 400px;
   background-color: #24588a;
   /* border: solid #24588a 1vh; */
-  margin-left: -0px;
-  margin-right: -0px;
+
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
 }
 .jumbotron h1 {
   color: #1869b5;
@@ -29,8 +29,7 @@
   display: flex;
   justify-content: space-around;
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: -10px;
+  margin-top: 20px;
 }
 .home__search__div select {
   padding: 0px 2rem;
@@ -42,10 +41,21 @@
 
 @media only screen and (max-width: 600px) {
   .container__products {
-    width: 94vw;
+    width: 100%;
     font-size: medium;
+    margin: auto;
   }
   .jumbotron {
     height: 10px;
+    width: 100%;
+  }
+  .home__search__div {
+    width: 100%;
+    margin: auto;
+
+    flex-direction: column;
+  }
+  .home__hl {
+    display: none;
   }
 }

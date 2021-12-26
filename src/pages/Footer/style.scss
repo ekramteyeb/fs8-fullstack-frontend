@@ -50,3 +50,18 @@
   background: #bb0000;
   color: white;
 }
+.footer__newsletter {
+  padding-left: 8vw;
+}
+@media only screen and (max-width: 600px) {
+  .footer {
+    width: 100%;
+    font-size: medium;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .jumbotron {
+    height: 10px;
+  }
+}

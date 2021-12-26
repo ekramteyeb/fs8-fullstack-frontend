@@ -17,7 +17,7 @@ export default function Home() {
   if(error){
     setSearch('')
   }
-  for (let number = 1; number <= 10; number++) {
+  for (let number = 1; number <= 4; number++) {
     items.push(
       <PageItem key={number} active={number === active}>
         {number}
@@ -68,7 +68,7 @@ export default function Home() {
           ''
         }
       </div>
-      <hr></hr>
+      <hr className="home__hl"></hr>
       <DisplayProducts products={data}/> <br/><br/><br/>
       <Pagination size='lg'>{items}</Pagination>
       {(error !== '') ? console.log(error, 'error') : ''}
