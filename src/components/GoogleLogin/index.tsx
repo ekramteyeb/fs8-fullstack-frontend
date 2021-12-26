@@ -12,7 +12,7 @@ import './style.scss'
 dotenv.config()
 function Login() {
   //const service = new Service()
-  const REACT_APP_GOOGLE_ID : string | any = process.env.REACT_APP_GOOGLE_ID
+  const GOOGLE_ID : string | any = process.env.GOOGLE_ID
   const dispatch = useDispatch()
   const onSuccess = async (response: any) => {
     let res = await axios.post(
@@ -40,7 +40,7 @@ function Login() {
   return (
     <div className='login'>
       <GoogleLogin
-        clientId={REACT_APP_GOOGLE_ID}
+        clientId={GOOGLE_ID}
         buttonText="Login using your google acount"
         onSuccess={onSuccess}
         onFailure={onFailure}
