@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { AppState } from '../../types'
-import { Button, Card, Container } from 'react-bootstrap'
+import { Button} from 'react-bootstrap'
 import Carousel from '../../components/Carousel'
 import CustomButton from '../../components/Button'
 import { addProduct } from '../../redux/actions'
@@ -16,7 +16,7 @@ export default function Product() {
   
   const user = state.user.loggedIn
   if (!product) {
-    return <div className="product__detail__div">
+    return <div className="product__details__div">
       <h4>Product details page</h4>
       <p>there is no product to show</p>
      
@@ -27,7 +27,7 @@ export default function Product() {
     for(let i = 0; i < x ; i++){
       stars.push(
         <i 
-          className="fa fa-star detail__fa__icons" 
+          className="fa fa-star details__fa__icons" 
           aria-hidden="true"
         >
         </i>
@@ -36,23 +36,21 @@ export default function Product() {
     return stars
   }
   return (
-    <Container className="product__detail__div">
+    <div className="product__details__div container">
       <div className="left">
         <Carousel 
-          className="carousel__detail" 
+          className="carousel__details" 
           image={product.image} 
           height='195vh' 
         />
       </div>
-      <div className="right">
-        <Card className='product__detail__card'>
-          <small className='product__detail__code'>
-            #{product.productCode}
-          </small>
-          <Card.Body>
-            <Card.Title>{product.name}</Card.Title>
-            <hr></hr>
-            <Card.Text>
+      
+      <div className='product__details__card'>
+        
+        <h4>{product.name}</h4>
+        <hr></hr>
+        <div>
+            #{product.productCode}<br/>
             price  : {product.price} €<br/>
             year model : {product.productionYear}<br/>
             model type  : {product.modelType} <br/>
@@ -60,65 +58,64 @@ export default function Product() {
             category : {product.category}<br/>
             color: {product.color}<br/>
             Available : {product.amount}
-            </Card.Text>
-            <div className="product_detail__details">
-              <hr></hr>
+            Technical info : 
+          
+          {product.techInfo.map((info:string) =>
+            <li key={info}>
+              {info}
+            </li>
+          )
+          }
+          
+         
+         
+          <hr></hr>
 
             Customer rating : 
-              <div className="product__detail__stars">
-                {product.rating > 0 ? 
-                  printStar(product.rating).map((p, index)=> 
-                    <span key={index}>
-                      {p}
-                    </span>
-                  ) :
-                  0
-                }
-              </div> 
-              {product.users.length} items sold
-              <hr></hr>
+          <div className="product__details__stars">
+            {product.rating > 0 ? 
+              printStar(product.rating).map((p, index)=> 
+                <span key={index}>
+                  {p}
+                </span>
+              ) :
+              0
+            }
+          </div> 
+          {product.users.length} items sold
+          
             
-            Technical info : 
-              <ul>
-                {product.techInfo.map((info:string) =>
-                  <li key={info}>
-                    {info}
-                  </li>
-                )
-                }
-              </ul>
-              <hr></hr>
-              <Link to="/">
-                <CustomButton 
-                  color="info" 
-                  text="Back" 
-                />
-              </Link>
-              {' '}
-              <Button 
-                variant="success" 
-                onClick={() => 
-                  dispatch(addProduct(product))
-                }
-              >
+        </div>
+        <hr></hr>
+        <Link to="/">
+          <CustomButton 
+            color="info" 
+            text="Back" 
+          />
+        </Link>
+        {' '}
+        <Button 
+          variant="success" 
+          onClick={() => 
+            dispatch(addProduct(product))
+          }
+        >
                 add to cart
-              </Button>
-              {' '}
-              {
-                user.isAdmin ? 
-                  <Link to="/admin">
-                    <CustomButton 
-                      color="warning" 
-                      text="Back to Admin" 
-                    />
-                  </Link> : 
-                  ''
-              }
-            </div>
-          </Card.Body>
-        </Card>
+        </Button>
+        {' '}
+        {
+          user.isAdmin ? 
+            <Link to="/admin">
+              <CustomButton 
+                color="warning" 
+                text="Back to Admin" 
+              />
+            </Link> : 
+            ''
+        }
+          
       </div>
-    </Container>
+    </div>
   )
 }
 

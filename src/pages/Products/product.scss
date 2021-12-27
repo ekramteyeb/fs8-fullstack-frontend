@@ -1,25 +1,25 @@
-.product__detail__div {
+.product__details__div {
   padding-top: 0vh;
   width: 80%;
   margin: auto;
   margin-top: 14vh;
   display: flex;
   justify-content: space-between;
+  padding: 10px;
 }
-.product__detail__card {
+.product__details__card {
   border: solid white 1px;
   border-radius: 0.5em;
   padding-top: 10vh;
 }
-.right {
-  width: 50%;
+.product__details__code {
+  display: none;
 }
 
 .left {
   width: 50%;
   border: solid white 1px;
   padding: 0px 5px;
-  position: relative;
   border-radius: 0.5em;
   background-color: white;
   padding-top: 5vh;
@@ -27,10 +27,10 @@
 .product__code {
   color: white;
 }
-.product__card__details {
+.product__cardd__details {
   display: block;
 }
-.product__detail__stars {
+.product__details__stars {
   padding-left: 0;
 }
 
@@ -38,20 +38,31 @@
   font-size: small;
   display: inline;
 }
+@media only screen and (max-width: 450px) {
+  .product__details__div {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 5vh;
+    align-items: center;
 
-/* .product__div :hover > .product__code {
-  color: black;
+    flex-direction: column;
+  }
+  .left {
+    width: 90%;
+  }
+  .right {
+    width: 90%;
+  }
+  .product__details__card {
+    border: solid white 1px;
+    border-radius: 0.5em;
+    padding-top: 3vh;
+    width: 90%;
+  }
+  .carousel__details {
+    height: 40vh;
+    width: 15rem;
+    border-bottom: 0vh;
+  }
 }
-.product__div :hover > .card__details {
-  display: block;
-}
-.carousel :hover {
-  color: red;
-}
-.product__image__div {
-  width: 100%;
-}
-.product__image {
-  width: 150px;
-}
- */
