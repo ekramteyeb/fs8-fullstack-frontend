@@ -12,3 +12,14 @@
   justify-content: center;
   flex-direction: column;
 }
+@media only screen and (max-width: 450px) {
+  .admin__page__div {
+    width: 100%;
+    margin: 2vh auto;
+    padding: 2vh 0rem;
+    margin-top: 14vh;
+  }
+  .admin__page__div h3 {
+    text-align: center;
+  }
+}

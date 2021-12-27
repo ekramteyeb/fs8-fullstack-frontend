@@ -51,20 +51,23 @@ handleDelete
           <div className="admin__card__buttons">
             <Link to={`#`}>
               <CustomButton 
+                className="adminbutton"
                 color="info" 
                 text="Edit" 
                 onClick={handleEdit}/>
             </Link>
-            {'-'}
+            
             <Link to={`/products/${id}`}>
               <CustomButton 
+                className="adminbutton"
                 color="info" 
                 text="Detail" 
               />
             </Link>
-            {'- '}
+            
             <Link to={`#`}>
               <CustomButton 
+                className="adminbutton"
                 color="danger" 
                 text="Delete" 
                 onClick={handleDelete}/>

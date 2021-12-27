@@ -95,7 +95,7 @@ export default function AdminPage(){
       <Container fluid className="admin__page__div">
         <div className="admin__menu">
           {message ? <Notification message={message} color={color} /> : '' }
-          {products.length}
+          <small>{products.length} products</small>
           <Nav className="admin__nav" variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
               <Nav.Link 

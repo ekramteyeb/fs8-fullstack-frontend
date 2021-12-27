@@ -14,6 +14,7 @@
   border-radius: 0.9em;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: row;
 }
 .admin__card__body {
@@ -72,8 +73,40 @@
   justify-content: space-between;
   align-items: center;
 }
-@media only screen and (min-width: 1200px) {
+/* @media only screen and (min-width: 1200px) {
   .product__div {
     height: 60vh;
+  }
+} */
+@media only screen and (max-width: 450px) {
+  .product__admin__div {
+    height: 150px;
+    width: 100%;
+    font-size: small;
+    margin-bottom: 3vh;
+  }
+  .product__admin__card {
+    height: 150px;
+  }
+  .admin__card__buttons {
+    flex-direction: column;
+  }
+  .adminbutton {
+    margin: 2px;
+    width: 100px;
+  }
+  .admin__carousel {
+    padding: 0px;
+    width: 20%;
+  }
+
+  .admin__carousel {
+    padding: 4px;
+    width: 20%;
+    margin: auto;
+  }
+  .admin__card__details {
+    display: inline-block;
+    padding: 10px;
   }
 }

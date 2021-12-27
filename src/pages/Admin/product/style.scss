@@ -11,3 +11,13 @@
 .create__image__url {
   width: 100%;
 }
+@media only screen and (max-width: 450px) {
+  .create__product__form {
+    width: 90%;
+    margin: auto;
+  }
+  .create {
+    width: 40%;
+    margin: auto;
+  }
+}

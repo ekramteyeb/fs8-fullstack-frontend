@@ -81,3 +81,16 @@
 .product__buynow__item {
   padding: 6vh 0rem;
 }
+
+@media only screen and (max-width: 450px) {
+  .cart__items {
+    width: 98%;
+    margin-top: 7vh;
+  }
+  .cart__items__top {
+    flex-direction: column;
+  }
+  .product__list {
+    flex-direction: column;
+  }
+}
