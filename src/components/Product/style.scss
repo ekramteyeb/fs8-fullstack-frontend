@@ -11,7 +11,7 @@
   margin: 10px 5px;
   border-radius: 0.9em;
   height: 400px;
-  width: 80%;
+  width: 90%;
 }
 .product__top {
   display: flex;
@@ -90,10 +90,12 @@
     width: 100%;
     margin: auto;
     font-size: medium;
+    margin-bottom: 15px;
   }
   .card {
-    height: 450px;
-    margin-bottom: 15px;
+    height: 400px;
+
     width: 86%;
+    margin: auto;
   }
 }
