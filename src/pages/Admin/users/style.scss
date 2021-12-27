@@ -3,3 +3,11 @@
   height: 50px;
   border-radius: 0.2em;
 }
+.user__container {
+  width: 100%;
+}
+@media only screen and (max-width: 450px) {
+  .user__container {
+    width: 100%;
+  }
+}

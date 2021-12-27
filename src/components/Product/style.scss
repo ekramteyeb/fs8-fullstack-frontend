@@ -88,14 +88,16 @@
 @media only screen and (max-width: 450px) {
   .product__div {
     width: 100%;
-    margin: auto;
     font-size: medium;
     margin-bottom: 15px;
   }
   .card {
-    height: 405px;
-
-    width: 86%;
+    height: 370px;
+    width: 80%;
+    margin: auto;
+  }
+  .carousel {
+    width: 60%;
     margin: auto;
   }
 }

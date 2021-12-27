@@ -3,11 +3,13 @@ import Carousel from "../Carousel"
 import ProductType from '../../types/product'
 
 import './style.scss'
+import { Link } from "react-router-dom"
 
  type PropTypes = { 
    product : ProductType ,
    likeColor?: string,
    handleAdd?: () => void,
+   handleDetail?:() => void,
    handleLike? : () => void
 } 
 export default function Product({product:{
@@ -26,6 +28,7 @@ export default function Product({product:{
   users
 },
 handleAdd,
+handleDetail,
 handleLike,
 likeColor
 }:PropTypes){
@@ -65,8 +68,8 @@ likeColor
               role='button' 
               tabIndex={0} 
               onKeyPress={() => alert('me')} 
-              onClick={handleAdd}>
-              <i className="fa fa-info"></i>
+            >
+              <Link to={`/products/${id}`}><i className="fa fa-info"></i></Link>
             </span>
             <span
               className="product__add__icon"  

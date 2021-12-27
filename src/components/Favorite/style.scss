@@ -20,3 +20,11 @@
 .offcanvas__favorite {
   width: 33%;
 }
+@media only screen and (max-width: 450px) {
+  .offcanvas__favorite {
+    width: 60%;
+  }
+  .admin__page__div h3 {
+    text-align: center;
+  }
+}

@@ -36,7 +36,7 @@ export default function AdminPage(){
   const state = useSelector((state: AppState) => state)
   const products = state.product.allProducts
   const token : string | any = state.user.loggedIn.token
-  const [switche , setSwith] = useState('')
+  const [switche , setSwitch] = useState('')
   const [message , setMessage] = useState('')
   const [color , setColor] = useState(false)
   const dispatch = useDispatch()
@@ -80,7 +80,7 @@ export default function AdminPage(){
           <Product key={product.id} 
             product={product} 
             handleEdit={
-              () => setSwith('addproduct')
+              () => setSwitch('addproduct')
             }
             handleDelete={() => handleDelete(product.id)}
             
@@ -99,27 +99,27 @@ export default function AdminPage(){
           <Nav className="admin__nav" variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
               <Nav.Link 
-                onClick={() => setSwith('products')}
+                onClick={() => setSwitch('products')}
                 href="#">
                  Products
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link 
-                onClick={() => setSwith('users')} 
+                onClick={() => setSwitch('users')} 
                 href="#" >
                 Users
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link 
-                onClick={() => setSwith('orders')} 
+                onClick={() => setSwitch('orders')} 
                 href="#">
                Orders
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link onClick={() => setSwith('carts')} 
+              <Nav.Link onClick={() => setSwitch('carts')} 
                 href="#">
                Carts
               </Nav.Link>
@@ -133,7 +133,7 @@ export default function AdminPage(){
               <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <CustomButton 
                   text="add product"
-                  onClick={() => setSwith('addproduct')}
+                  onClick={() => setSwitch('addproduct')}
                 />
               </h3>
             </Nav.Item>
