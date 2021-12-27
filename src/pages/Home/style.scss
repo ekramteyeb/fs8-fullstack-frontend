@@ -50,10 +50,12 @@
     width: 100%;
   }
   .home__search__div {
-    width: 100%;
     margin: auto;
-
-    flex-direction: column;
+    width: 90%;
+    flex-direction: row;
+  }
+  .home__search__div select {
+    padding: 0px;
   }
   .home__hl {
     display: none;

@@ -50,7 +50,7 @@ likeColor
           </div>
         </div>
         
-        <Carousel className="carousel" image={image} height='20vh' />
+        <Carousel className="carousel" image={image} height='30vh' />
         
         <Card.Body>
           <Card.Title>{name}</Card.Title>

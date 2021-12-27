@@ -13,7 +13,7 @@ export default function ProfileEditLink(){
       title={
         <div className="nav__title">
           {
-            `Welcome ${user.firstName ? 
+            `${user.firstName ? 
               user.firstName :
               'User'} `
           }
