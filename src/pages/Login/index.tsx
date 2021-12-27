@@ -92,7 +92,7 @@ export default function LogInForm(){
     }
   }
   return (
-    <div className='login__form__div'>
+    <div className='login__formm__div'>
       { error ? <Notification message={error} color={color}/> : ''}
       <div className='login__text__div'>
         <h3>Log in</h3>
@@ -101,7 +101,7 @@ export default function LogInForm(){
       <hr className='login__line'></hr>
 
       <Form className='login__form'  onSubmit={handleLogin}>
-        <Form.Group className='mb-4' controlId='formBasicEmail'>
+        <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email address *</Form.Label>
           <Form.Control 
             type='email' 
@@ -114,7 +114,7 @@ export default function LogInForm(){
           </Form.Text>
         </Form.Group>
         {' '}
-        <Form.Group className='mb-4' controlId='formBasicPassword'>
+        <Form.Group className='mb-3' controlId='formBasicPassword'>
           <Form.Label>Password *</Form.Label>
           <Form.Control 
             type='password' 

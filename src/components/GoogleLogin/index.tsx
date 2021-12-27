@@ -41,7 +41,7 @@ function Login() {
     <div className='login'>
       <GoogleLogin
         clientId={REACT_APP_client_id}
-        buttonText="Login using your google acount"
+        buttonText="Login with google acount"
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
