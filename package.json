@@ -73,5 +73,6 @@
       "npx prettier --write",
       "eslint --fix"
     ]
-  }
+  },
+  "homepage": "https://daki-ecommerce.herokuapp.com/"
 }
