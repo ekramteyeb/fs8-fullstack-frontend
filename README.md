@@ -14,6 +14,7 @@
 ## Front end hosted in Netlify, back-end in Heroku 
 
 _https://daki-ecommerce.netlify.app/_
+
 _https://daki-ecommerce.herokuapp.com/api/v1/products_
 
 Front end : 
