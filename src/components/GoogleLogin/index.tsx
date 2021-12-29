@@ -36,7 +36,6 @@ function Login() {
       `Failed to login.Please try again`
     );
   };
-
   return (
     <div className='login'>
       <GoogleLogin

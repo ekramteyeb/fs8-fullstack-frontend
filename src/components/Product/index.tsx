@@ -61,7 +61,6 @@ likeColor
             Price {price} € 
           </Card.Text>
           <div className="product__icons__div">
-            
             <i className="fa fa-star" aria-hidden="true">{' '}{rating}</i>
             <span
               className="product__detail__icon"  
