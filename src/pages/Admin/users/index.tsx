@@ -5,12 +5,13 @@ import { Table } from "react-bootstrap"
 import { AppState } from "../../../types"
 import { User } from "../../../types/user"
 import CustomButton from "../../../components/Button"
+import { BASE_URL } from "../../../resources"
 
 import './style.scss'
 
 export const Users = () => {
   const [users, setUsers] = useState([])
-  const url = 'http://localhost:3001/api/v1/users'
+  const url = `${BASE_URL}/users`
   const user = useSelector((state:AppState) => state.user.loggedIn)
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export const Users = () => {
     }).catch(function (error) {
       console.log(error);
     })
-  },[user.token])
+  },[user.token, url])
 
   return(
     <div className="user__container">
