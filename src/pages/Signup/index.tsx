@@ -3,9 +3,9 @@ import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Notification from '../../components/Notification'
 import GoogleLogin from '../../components/GoogleLogin'
+import { BASE_URL } from "../../resources";
 
 import './style.scss'
-import { BASE_URL } from "../../resources";
 
 export default function SignupForm(){
   const [email, setEmail] = useState('')
