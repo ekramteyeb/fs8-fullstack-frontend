@@ -11,7 +11,6 @@ require('dotenv').config()
 export default function App() {
 
   const [theme , setTheme] = React.useState(Theme.Blue)
-  //hook to set local storage variable for cart 
   useStoreCart()
 
   return (

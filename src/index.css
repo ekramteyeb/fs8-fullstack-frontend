@@ -6,9 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   background-attachment: fixed;
-  background-color: white /*  #000332 */ /* #293a4a */ /* #f0f0eb */
-    /* #D7D7CF */;
-  /* #F9FAFB */
+  background-color: white /*  #000332 */ /* #293a4a */ /* #f0f0eb */;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
