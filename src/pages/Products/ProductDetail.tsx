@@ -43,6 +43,19 @@ export default function Product() {
           image={product.image} 
           height='195vh' 
         />
+        <hr></hr>
+
+            Customer rating : 
+        <div className="product__details__stars">
+          {product.rating > 0 ? 
+            printStar(product.rating).map((p, index)=> 
+              <span key={index}>
+                {p}
+              </span>
+            ) :
+            0
+          }
+        </div> 
       </div>
       
       <div className='product__details__card'>
@@ -69,19 +82,7 @@ export default function Product() {
           
          
          
-          <hr></hr>
-
-            Customer rating : 
-          <div className="product__details__stars">
-            {product.rating > 0 ? 
-              printStar(product.rating).map((p, index)=> 
-                <span key={index}>
-                  {p}
-                </span>
-              ) :
-              0
-            }
-          </div> 
+          
           {product.users.length} items sold
           
             
