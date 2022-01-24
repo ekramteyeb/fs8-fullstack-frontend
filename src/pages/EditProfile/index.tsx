@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {  Form } from "react-bootstrap";
+import {  Form , Image} from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import CustomButton from "../../components/Button";
 import Notification from '../../components/Notification'
@@ -17,6 +17,7 @@ const initialuserState = {
   street:'',
   postalCode:'',
   country:'',
+  avatar: ''
 }
 export default function EditProfile(){
   
@@ -27,7 +28,6 @@ export default function EditProfile(){
   const [findPassword, setFindPassword] = useState('')
   const [result, setResult] = useState('')
   const [color, setColor] = useState(false)
-
   const handleChange = (e: any) => {
     const {name , value} = e.target
     setSuser({...suser, [name]: value})
@@ -66,7 +66,8 @@ export default function EditProfile(){
         street: suser.street ? suser.street : loggedinUser.address?.street,
         postalCode: suser.postalCode ? suser.postalCode : loggedinUser.address?.postalCode,
         country: suser.country ? suser.country : loggedinUser?.address?.country
-      }
+      },
+      avatar : suser.avatar ? suser.avatar : loggedinUser.avatar
     }
   
     try {
@@ -99,6 +100,7 @@ export default function EditProfile(){
       { result ? <Notification message={result} color={color}/> : ''}
       <div className="edit__text__div">
         <h3>Edit profile</h3>
+        <Image style={{width:"100px",height:"100px",borderRadius:"50%", marginTop:"0px", border:"none"}} src={`${loggedinUser.avatar ? loggedinUser.avatar : 'https://husstey.sirv.com/Images/adey_abeba.jpeg'}`} alt="profile image" />
       </div>
       <hr className="edit__line"></hr>
 
@@ -224,6 +226,22 @@ export default function EditProfile(){
             />
           </div>
         </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicFullName">
+          <Form.Label>Image</Form.Label>
+          <Form.Control 
+            type="text"
+            name="avatar"
+            onChange={handleChange}  
+            value={suser.avatar} 
+            placeholder={
+              loggedinUser?.avatar ? 
+                loggedinUser?.avatar : 
+                "Image url"
+            } 
+          />
+        </Form.Group>
+        {' '}
         <CustomButton 
           color="outline-success"
           width={200} 

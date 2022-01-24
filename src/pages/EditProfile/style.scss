@@ -2,13 +2,16 @@
   width: 53%;
   margin: 2vh auto;
   padding: 2vh 3rem;
-  margin-top: 14vh;
+  margin-top: 12vh;
 }
+
 .edit__text__div {
   font-weight: bold;
   filter: blur(0px);
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 .edit__text__div :hover {
   filter: blur(-5px);
