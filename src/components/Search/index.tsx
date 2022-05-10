@@ -10,7 +10,7 @@ type PropTypes = {
 }
 const SearchComponent = ({ handleChange, placeholder }: PropTypes) => {
   return (
-    <Form className="d-flex search">
+    <Form className="d-flex col-4 search">
       <Form.Control
         type="search"
         placeholder={placeholder}

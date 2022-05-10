@@ -33,6 +33,7 @@ export default function Home() {
         <SearchComponent
           handleChange={(e) => setSearch(e.target.value)}
           placeholder="search product"
+          
         />
         <>
           
@@ -40,6 +41,7 @@ export default function Home() {
             name="cars"
             onChange={(e) => setCategory(e.target.value)} 
             id="category"
+            className="form-select form-select-lg mr-4 "
           >
             <option value="">Category</option>
             <option value="mobile">mobile</option>
@@ -48,11 +50,13 @@ export default function Home() {
             
           </select> 
         </>
+        
         <>
           <select 
             name="price" 
             onChange={(e) => setDesending(e.target.value)}
             id="price"
+            className="form-select form-select-lg"
           >
             <option value="">Price</option>
             <option value="asc">Chepest</option>
@@ -68,6 +72,7 @@ export default function Home() {
           ''
         }
       </div>
+    
       <hr className="home__hl"></hr>
       <DisplayProducts products={data}/> <br/><br/><br/>
       <Pagination size='lg'>{items}</Pagination>
