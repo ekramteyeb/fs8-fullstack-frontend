@@ -36,7 +36,6 @@ export default function Home() {
           
         />
         <>
-          
           <select
             name="cars"
             onChange={(e) => setCategory(e.target.value)} 
