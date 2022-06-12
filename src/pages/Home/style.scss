@@ -51,9 +51,15 @@
   }
   .home__search__div {
     margin: auto;
-    width: 90%;
+    width: 80%;
     flex-direction: column;
     margin-top: 2vh;
+  }
+  #category{
+    width: 100%;
+  }
+  #price{
+    width:100%;
   }
   .search{
     width: 100%;
