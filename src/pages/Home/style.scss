@@ -52,8 +52,14 @@
   .home__search__div {
     margin: auto;
     width: 90%;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 2vh;
+  }
+  .search{
+    width: 100%;
+  }
+  .search_bar{
+    width: 100%;
   }
   .home__search__div select {
     padding: 0px;

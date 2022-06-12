@@ -72,7 +72,7 @@ export default function Home() {
         }
       </div>
     
-      <hr className="home__hl"></hr>
+      {/*  <hr className="home__hl"></hr> */}
       <DisplayProducts products={data}/> <br/><br/><br/>
       <Pagination size='lg'>{items}</Pagination>
       {(error !== '') ? console.log(error, 'error') : ''}

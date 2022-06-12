@@ -38,7 +38,7 @@ likeColor
   return (
     <div className='product__div'>
       
-      <Card className='product__card' >
+      <Card className='card product__card' >
         <div className='product__top'>
           <small className='product__code'>
             #{productCode}
@@ -58,7 +58,7 @@ likeColor
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
-            Price {price} € 
+            Price {price} €
           </Card.Text>
           <div className="product__icons__div">
             <i className="fa fa-star" aria-hidden="true">{' '}{rating}</i>
