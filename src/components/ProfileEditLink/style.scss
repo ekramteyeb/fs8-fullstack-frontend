@@ -4,6 +4,7 @@
   text-align: center;
   padding: -10px;
 }
+
 .nav__title {
   color: lemonchiffon;
   display: inline;
@@ -20,4 +21,9 @@
 }
 .cyan {
   background-color: #2ed2f2;
+}
+@media only screen and (max-width: 600px) {
+  #userName{
+    display:none;
+  }
 }

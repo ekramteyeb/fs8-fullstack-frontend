@@ -38,11 +38,11 @@
   font-size: 10pt;
   color: red;
 }
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 790px) {
   .edit__form__div {
-    width: 100%;
+    width: 96%;
     margin: 2vh auto;
-    padding: 0vh 3rem;
-    margin-top: 12vh;
+    padding: 2vh 3rem;
+    margin-top: 8vh;
   }
 }
