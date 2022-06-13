@@ -6,6 +6,7 @@ import { AppState } from "../../../types"
 import { User } from "../../../types/user"
 import CustomButton from "../../../components/Button"
 import { BASE_URL } from "../../../resources"
+/* import {  AiOutlineUser } from 'react-icons/ai' */
 
 import './style.scss'
 
@@ -43,13 +44,19 @@ export const Users = () => {
           </tr>
         </thead>
         <tbody>
-          { users?.map((u: User) => 
+          { users?.map((u: User, index) => 
             <tr key={u.id}>
               <td>
-                <img className="user__avatar" 
-                  src={u.avatar} 
-                  alt={'user pictur'}
-                />
+                {
+                  u.avatar ? 
+               
+                    <img className="user__avatar" 
+                      src={u.avatar} 
+                      alt={'user'}
+                    />
+                    :
+                    <div style={{width:50, height:48, padding:2, backgroundColor: index % 2 === 0 ? '#AB47BB' : '#7E58C2', borderRadius:'0.1em', textAlign:'center',paddingTop:8, color:'white', fontWeight:'bolder', fontSize:22}}>{u.email?.charAt(0).toUpperCase()}</div>
+                }
               </td>
               <td>{u.firstName}</td>
               <td>{u.userName}</td>
@@ -61,6 +68,7 @@ export const Users = () => {
           )}
         </tbody>
       </Table>
+      
     </div>
   )
 }
