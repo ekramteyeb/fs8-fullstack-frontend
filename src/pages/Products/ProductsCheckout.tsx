@@ -34,12 +34,14 @@ export default function Products() {
           <CustomButton 
             text='Continue Shopping' 
             color='info'
+            
           />
         </Link>
+        <br/>
       </div>
       <ListGroup >
         {products.map(product => 
-          <ListGroup.Item className='product__list' key={product.product.id}>
+          <ListGroup.Item className='product__list p-2' key={product.product.id}>
             <Image 
               src={product.product.image} 
               width='150px' 
@@ -53,14 +55,14 @@ export default function Products() {
               {` x  ${product.quantity} `
               }
               <button 
-                className='product__list__btn'
+                className='product__list__btn btn btn-primary m-1'
                 onClick={()=> 
                   dispatch(addCart(product.product)
                   )}>
                 +
               </button>
               <button 
-                className='product__list__btn'
+                className='product__list__btn btn btn-danger m-2'
                 onClick={function(){
                   product.quantity > 1 ? 
                     dispatch(removeCart(product.product)) : 
