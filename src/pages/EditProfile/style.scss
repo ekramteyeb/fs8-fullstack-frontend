@@ -3,9 +3,11 @@
   margin: 2vh auto;
   padding: 2vh 3rem;
   margin-top: 12vh;
+ 
 }
 
 .edit__text__div {
+  
   font-weight: bold;
   filter: blur(0px);
   display: flex;
@@ -19,12 +21,13 @@
 }
 .edit__form {
   margin-top: 6vh;
+  
 }
 .edit__line {
-  width: 136%;
+  width: 100%;
   margin: auto;
-  margin-left: -20%;
-  border: solid blue 1px;
+  
+  border: solid blue 2px;
 }
 .address div {
   display: flex;

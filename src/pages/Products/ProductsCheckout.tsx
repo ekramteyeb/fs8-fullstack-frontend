@@ -8,6 +8,8 @@ import Image from "../../components/Image"
 
 import './style.scss'
 
+
+
 export default function Products() {
   
   const state = useSelector((state : AppState) => state)
@@ -32,7 +34,7 @@ export default function Products() {
         <h5>Your Shopping cart : {products.length} items</h5> 
         <Link to='/'>
           <CustomButton 
-            text='Continue Shopping' 
+            text='Continue Shoppingg' 
             color='info'
             
           />
@@ -78,6 +80,7 @@ export default function Products() {
           </ListGroup.Item>
         )}
       </ListGroup>
+      
       <div className='product__list__price'>
         <hr></hr>
         <span>

@@ -96,13 +96,13 @@ export default function EditProfile(){
     }
   }
   return (
-    <div className="edit__form__div">
+    <div className="edit__form__div text-start">
       { result ? <Notification message={result} color={color}/> : ''}
-      <div className="edit__text__div">
+      <div className="edit__text__div mb-2">
         <h3>Edit profile</h3>
         <Image style={{width:"100px",height:"100px",borderRadius:"50%", marginTop:"0px", border:"none"}} src={`${loggedinUser.avatar ? loggedinUser.avatar : 'https://husstey.sirv.com/Images/adey_abeba.jpeg'}`} alt="profile image" />
       </div>
-      <hr className="edit__line"></hr>
+      <hr className="edit__line "></hr>
 
       <Form className="edit__form" onSubmit={handledEditProfile}>
         <Form.Group className="mb-3" controlId="formBasicUserName">

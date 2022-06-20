@@ -15,11 +15,11 @@ export default function App() {
 
   return (
     <ThemeContext.Provider value={{theme,setTheme}}>
-      <>
+      <div className="App">
         <Header />
         <Routes />
         <Footer />
-      </>
+      </div>
     </ThemeContext.Provider>
   )
 }
