@@ -21,7 +21,7 @@ export default function Navigation() {
   
 
   return (
-    <Navbar bg={''}  variant="dark" style={{marginLeft:6}} collapseOnSelect expand={false} >
+    <Navbar bg={''}  variant="dark" style={{marginLeft:6}} className="navbar" collapseOnSelect expand={false} >
       <Container fluid >
         <Navbar.Toggle aria-controls="offcanvasNavbar"  />
         <Navbar.Offcanvas 

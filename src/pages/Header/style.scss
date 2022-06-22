@@ -66,9 +66,17 @@
     width: 100%;
     margin: auto;
     font-size: medium;
-    justify-content: space-around;
+    justify-content: space-between;
+    
   }
-
+  .top__banner__div{
+    justify-content: space-between !important;
+    width:100%;
+    padding:0 !important;
+  }
+  .navbar{
+    margin-left:0;
+  }
   .logo {
     font-size: 12pt;
   }

@@ -13,7 +13,7 @@ export default function ProfileEditLink(){
     <NavDropdown
       title={
         <div className="nav__title">
-          <Image src={user.avatar} width={42} style={{marginRight:20}} height={42} rounded roundedCircle/>
+          <Image className="nav_image" src={user.avatar} width={42} style={{marginRight:20}} height={42} rounded roundedCircle/>
           {
             <span id="userName">{user.firstName ? 
               user.firstName :
