@@ -14,7 +14,7 @@
   background-color: #24588a /* #8fb0a0  */ /* rgb(196, 192, 192) */
     /*  #293a4a */ !important;
   /* animation: 500ms ease-in-out 0s normal none 1 running fadeInDown; */
-  padding: 0px 20px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 .top__banner__div {
   display: flex;
@@ -31,13 +31,16 @@
 .logo {
   color: lemonchiffon;
   font-family: cursive;
-  font-size: 22pt;
+  font-size: 24pt;
   font-weight: bold;
+  word-wrap:normal;
 }
 .header__icons {
   display: flex;
-  justify-content: space-between;
+  justify-content: start !important;
   align-items: center;
+ 
+  
 }
 .link {
   text-decoration: none;
@@ -70,10 +73,11 @@
     
   }
   .top__banner__div{
-    justify-content: space-between !important;
+    justify-content: start !important;
     width:100%;
-    padding:0 !important;
+    
   }
+  
   .navbar{
     margin-left:0;
   }

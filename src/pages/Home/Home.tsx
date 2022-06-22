@@ -32,7 +32,7 @@ export default function Home() {
       <div className="home__search__div">
         <SearchComponent
           handleChange={(e) => setSearch(e.target.value)}
-          placeholder="search product"
+          placeholder="Search product"
           
         />
         <>

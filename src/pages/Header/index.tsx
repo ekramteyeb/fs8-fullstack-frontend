@@ -26,7 +26,7 @@ export default function Header (){
       <div className="top__banner__div">
         <Navigation /> 
         <Link className="link" to="/">
-          <h1 className="logo">Daki e-commerce</h1>
+          <h1 className="logo">Daki e-Shop</h1>
         </Link>
       </div>
       
