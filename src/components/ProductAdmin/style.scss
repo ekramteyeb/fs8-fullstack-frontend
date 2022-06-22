@@ -13,8 +13,8 @@
 
   border-radius: 0.9em;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  align-items: start;
   flex-direction: row;
 }
 .admin__card__body {
@@ -78,15 +78,19 @@
     height: 60vh;
   }
 } */
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 600px) {
   .product__admin__div {
-    height: 150px;
+    height: 160px;
     width: 100%;
     font-size: small;
     margin-bottom: 3vh;
+    
+    
   }
   .product__admin__card {
     height: 150px;
+    padding-left: 1rem;
+    padding-top : 1vh;
   }
   .admin__card__buttons {
     flex-direction: column;
@@ -100,6 +104,7 @@
     padding: 4px;
     width: 20%;
     margin: auto;
+    height:20vh;
   }
   .admin__card__details {
     display: inline-block;
