@@ -51,31 +51,34 @@
   }
   .home__search__div {
     margin: auto;
-    width: 98%;
+    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 2vh;
+    
   }
   .search__bar{
     width:100% ;
+    margin-top:0 !important;
     margin-right: 0 !important;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
+    padding: 0.6rem;
   }
   #category{
     width: 50%;
+    
   }
   #price{
-    width:48%;
+    width:49%;
+    padding: 0.3rem;
   }
   .search{
     width: 100%;
+   
     
-  }
-  .search input {
-    width: 100%;
   }
   .search_bar{
     width: 100%;
+    
   }
   .home__search__div select {
     padding: 0px;
