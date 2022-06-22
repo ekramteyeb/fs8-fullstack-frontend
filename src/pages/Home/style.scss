@@ -51,17 +51,27 @@
   }
   .home__search__div {
     margin: auto;
-    width: 80%;
-    flex-direction: column;
+    width: 98%;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-top: 2vh;
   }
+  .search__bar{
+    width:100% ;
+    margin-right: 0 !important;
+    margin-bottom: 2px;
+  }
   #category{
-    width: 100%;
+    width: 50%;
   }
   #price{
-    width:100%;
+    width:48%;
   }
   .search{
+    width: 100%;
+    
+  }
+  .search input {
     width: 100%;
   }
   .search_bar{
