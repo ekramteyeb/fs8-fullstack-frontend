@@ -21,7 +21,7 @@ export default function ProfileEditLink(){
           }
           
 
-          <i className="bi bi-person-circle" style={{fontSize:24}}>
+          <i className="bi bi-person-circle" style={{fontSize:24, marginLeft:4}}>
           </i> 
         </div>
       } 
