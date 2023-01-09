@@ -102,6 +102,7 @@ export default function Products() {
       </div>
       {user?.email ? 
         <div>
+          <button className="btn btn-info"><Link to="/editprofile">Checkout-mui</Link></button>
           <div className='product__list__delivery'>
             <h5>Choose delivery Method</h5>
             <hr></hr>

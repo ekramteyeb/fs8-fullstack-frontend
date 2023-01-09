@@ -13,7 +13,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import VerificationPage from './pages/VerificationPage'
 import ResetPassword from './pages/ResetPassword'
 import Signup from './pages/Signup'
-import EditProfile from './pages/EditProfile'
+import EditProfile from './pages/EditProfil'
 import AdminPage from './pages/Admin'
 const Routes = () => (
   <main>
