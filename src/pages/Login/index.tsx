@@ -1,139 +1,110 @@
-import { useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { Link} from 'react-router-dom'
-import GoogleLogin from '../../components/GoogleLogin'
-import Notification from '../../components/Notification'
-import { addUser } from '../../redux/actions'
-import { BASE_URL } from '../../resources'
-import {fetchUser} from '../../utils/fetchUser'
-import { loginorSignup } from '../../utils/loginorSignup'
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import './style.scss'
-
-export default function LogInForm(){
-  const [email, setEmail] = useState('')
-  const [findEmail, setFindEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [color, setColor] = useState(false)
-  const dispatch = useDispatch()
-  
-  const clearNotify = () => {
-    setTimeout(()=>{ setError('')}, 4000)
-  }
-  // check the email 
-  const checkEmail = async (email: string) => {
-    try{
-      const response =  await fetch(
-        `${BASE_URL}/users/checkEmail`, 
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({email: email}),
-        })
-      
-      const emailResponse = await response.json()
-      if(emailResponse.statusCode){
-        setFindEmail(emailResponse.message)
-        setTimeout(() => setFindEmail(''), 2000)
-      }else{
-        setFindEmail('')
-      }
-      return emailResponse
-    }catch(error){
-      setError('Something went error while cheking email')
-      setTimeout(() => setError(''), 2000)
-      
-    }
-  }
-  
-  const handleLogin = async (e: { preventDefault: () => void }) => {
-    e.preventDefault()
-    try {
-      //login in 
-      const returnUser = await loginorSignup(
-        `${BASE_URL}/users/login`, 
-        email, 
-        password
-      )
-      //destruct id , token 
-      const {id, token}  = returnUser
-      if(token){
-        //when login is success full fetch the user details from db
-        const user = await fetchUser(id, token)
-        console.log('user from login fetch', user)
-        if(user){
-          const loggedinUser = {...user, googleId : '',token : token}
-          dispatch(addUser(loggedinUser))
-          localStorage.setItem('loggedinUser', JSON.stringify(loggedinUser))
-        }else{
-          setError('Something went wrong, please try again.')
-          clearNotify()
-        }
-        //then clear the form 
-        setColor(true)
-        setEmail('')
-        setPassword('')
-        setTimeout(function(){
-          setError('')
-          window.location.replace('/') 
-        }, 5000)
-        setError('Logged in   successfully') 
-      }else{
-        setError('Login failed email/password is not valid') 
-        clearNotify()
-      }
-    }catch(err){
-      setError('Email/password not correct, please try again.')
-      clearNotify()
-    }
-  }
+function Copyright(props: any) {
   return (
-    <div className='login__formm__div'>
-      { error ? <Notification message={error} color={color}/> : ''}
-      <div className='login__text__div'>
-        <h3>Log in</h3>
-        <Link  to='/signup'>JOIN AS A MEMEBER</Link>
-      </div>
-      <hr className='login__line'></hr>
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
-      <Form className='login__form'  onSubmit={handleLogin}>
-        <Form.Group className='mb-3' controlId='formBasicEmail'>
-          <Form.Label>Email address *</Form.Label>
-          <Form.Control 
-            type='email' 
-            onChange={(e) => setEmail(e.target.value)} 
-            onBlur={() => checkEmail(email)} 
-            required 
-            placeholder='Enter email' />
-          <Form.Text className='text-muted'>
-            <span className="login__emailFound">{findEmail}</span>
-          </Form.Text>
-        </Form.Group>
-        {' '}
-        <Form.Group className='mb-3' controlId='formBasicPassword'>
-          <Form.Label>Password *</Form.Label>
-          <Form.Control 
-            type='password' 
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
-            placeholder='Password' 
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-          <Form.Check type='checkbox'  label='remember password' />
-        </Form.Group>
-        <div className='login__buttons'>
-          <Button variant='primary' type='submit'>Login</Button>
-          <GoogleLogin />
-        </div>
-      </Form>
-      <br/>
-      <Link to="/forgot"> Forgot password?</Link>
+const theme = createTheme();
 
-    </div>
-  )
+export default function SignIn() {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
+  );
 }

@@ -48,6 +48,13 @@ export default function Navigation() {
                     text='Sign In'
                   />
                 </Nav.Link>
+                <Nav.Link href="/loginn" >
+                  <CustomButton
+                    className="theme__btn purplebtn"
+                    color="primary"
+                    text='Sign Inn'
+                  />
+                </Nav.Link>
               </Nav>
               <Nav 
                 className="justify-content-end flex-grow-1 pe-3" 

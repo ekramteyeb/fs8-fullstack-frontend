@@ -100,6 +100,7 @@ export default function Checkout() {
                 confirmation, and will send you an update when your order has
                 shipped.
               </Typography>
+              <Button variant="contained" style={{ marginTop:'30px' }} ><Link href="/" style={{ color:'whitesmoke' }}>Go back to Home</Link> </Button>
             </React.Fragment>
           ) : (
             <React.Fragment>

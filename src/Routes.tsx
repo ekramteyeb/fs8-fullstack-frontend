@@ -8,7 +8,8 @@ import { Routes as Switch, Route, /* Navigate */ } from 'react-router-dom' // up
 import Home from './pages/Home/Home'
 import Product from './pages/Products/ProductDetail'
 import Products from './pages/Products/ProductsCheckout'
-import LogIn from './pages/Login'
+import LogIn from './pages/Login/index'
+import LogInn from './pages/Login/indexx'
 import ForgotPassword from './pages/ForgotPassword'
 import VerificationPage from './pages/VerificationPage'
 import ResetPassword from './pages/ResetPassword'
@@ -22,6 +23,7 @@ const Routes = () => (
       <Route path="/products" element={<Products />} />
       <Route path="/products/:id" element={<Product />} />
       <Route path="/login" element={<LogIn />} />
+      <Route path="/loginn" element={<LogInn />} />
       <Route path="/forgot" element={<ForgotPassword />} />
       <Route path="/verificationpage" element={<VerificationPage />} />
       <Route path="/passwordreset/:token" element={<ResetPassword />} />
