@@ -48,11 +48,11 @@ export default function Navigation() {
                     text='Sign In'
                   />
                 </Nav.Link>
-                <Nav.Link href="/loginn" >
+                <Nav.Link href="/signin" >
                   <CustomButton
                     className="theme__btn purplebtn"
                     color="primary"
-                    text='Sign Inn'
+                    text='Sign In -mui'
                   />
                 </Nav.Link>
               </Nav>
