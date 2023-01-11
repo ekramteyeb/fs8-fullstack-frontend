@@ -84,11 +84,12 @@ export default function Album() {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <Grid item key={card.id} xs={12} sm={6} md={4}>
+              <Grid item key={card.id} xs={12} sm={6} md={4} >
                 <Card
+                  
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
-                  {card.price} euro
+        
                   <CardMedia
                     component="img"
                     style={{ width:'80%',margin:'auto' }}
@@ -101,8 +102,11 @@ export default function Album() {
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h5"  component="h2">
                       {card.name}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" className='text-danger' component="h2">
+                      € {card.price}
                     </Typography>
                     <Typography>
                       This is a media card. You can use this section to describe the
