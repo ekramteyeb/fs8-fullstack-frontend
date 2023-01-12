@@ -38,7 +38,7 @@ handleDelete
       <Card className='product__admin__card'>
         <Carousel className="admin__carousel" 
           image={image} 
-          height='22vh' 
+          height='20vh' 
         />
         <Card.Body className="admin__card__body">
           <div className="admin__card__details">

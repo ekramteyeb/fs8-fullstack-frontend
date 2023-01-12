@@ -5,6 +5,7 @@ import Product from "../../components/ProductAdmin"
 import { AppState } from "../../types"
 import { Users } from "./users"
 import { Orders } from "./orders"
+import { Carts } from "./carts"
 import CustomButton from "../../components/Button"
 import CreateProduct  from "./product/createProduct"
 import Notification from "../../components/Notification"
@@ -22,7 +23,7 @@ export const Products = ({products } : any) => {
     </>
   )
 }
-export const Carts = () => {
+/* export const Carts = () => {
   return(
     <>
       {
@@ -30,7 +31,7 @@ export const Carts = () => {
       }
     </>
   )
-}
+} */
 export default function AdminPage(){
 
   const state = useSelector((state: AppState) => state)
