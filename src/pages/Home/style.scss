@@ -8,7 +8,7 @@
   background: url('../../images/mobile-phone-ga542b1fa1_1920.jpg');
   background-repeat: repeat-x;
   padding-top: 150px;
-  min-height: 100vmin;
+  min-height: 40vmin;
   /* background-color: #24588a; */
   /* border: solid #24588a 1vh; */
 
@@ -19,7 +19,7 @@
   background-size: cover;
   width: 100%;
 }
-.jumbotron h1 {
+.jumbotron h1 ,p{
   color: lemonchiffon;
   font-weight: bold;
 }
