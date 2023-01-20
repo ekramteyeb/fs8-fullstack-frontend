@@ -25,9 +25,13 @@ export default function Home() {
     );
   }
   return (
-    <div className='container__products'>
+    <div className='container__products jumbotron'>
       <div className="jumbotron">
         <h1 className="display-4">For your favorite Mobile Choices!</h1>
+        <p>
+          Daki e-shops brings you a very recent and high quarlity mobiles, tablets,
+          televisions based on your requirements to satify its customers.
+        </p>
       </div>
       <div className="home__search__div">
         <SearchComponent
